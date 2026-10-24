@@ -1,52 +1,57 @@
-<div align="center">
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/logo-dark.png">
+    <img src=".github/assets/logo-light.png" alt="ATLANTECH, Intelligent Port Operations" width="340">
+  </picture>
+</p>
 
-# 📱 ATLANTECH — Mobile App
+<p align="center"><b>Mobile App</b> &nbsp;|&nbsp; the plan, in the pocket of whoever carries it out</p>
+<p align="center"><i>Smarter coordination. Stronger ports.</i></p>
 
-### Offline-First Field App for Port Operations
+<p align="center">
+  <img src="https://img.shields.io/badge/status-in_development-A58D66?style=flat-square&labelColor=083A4F" alt="status">
+  <img src="https://img.shields.io/badge/part_of-ATLANTECH-407E8C?style=flat-square&labelColor=083A4F" alt="part of ATLANTECH">
+</p>
 
-![Status](https://img.shields.io/badge/status-in%20development-A58D66?style=for-the-badge)
-![Part of](https://img.shields.io/badge/part%20of-ATLANTECH-083A4F?style=for-the-badge)
+<p align="center">
+  <img src="https://img.shields.io/badge/Flutter-framework-407E8C?style=flat-square&logo=flutter&logoColor=E5E1DD&labelColor=083A4F" alt="Flutter">
+  <img src="https://img.shields.io/badge/Dart-3.11-407E8C?style=flat-square&logo=dart&logoColor=E5E1DD&labelColor=083A4F" alt="Dart">
+  <img src="https://img.shields.io/badge/Android-supported-407E8C?style=flat-square&logo=android&logoColor=E5E1DD&labelColor=083A4F" alt="Android">
+  <img src="https://img.shields.io/badge/iOS-supported-407E8C?style=flat-square&logo=apple&logoColor=E5E1DD&labelColor=083A4F" alt="iOS">
+  <img src="https://img.shields.io/badge/WebSocket-realtime-407E8C?style=flat-square&labelColor=083A4F" alt="WebSocket">
+  <img src="https://img.shields.io/badge/offline--first-outbox-407E8C?style=flat-square&labelColor=083A4F" alt="offline-first">
+</p>
 
-![Flutter](https://img.shields.io/badge/Flutter-02569B?style=flat-square&logo=flutter&logoColor=white)
-![Dart](https://img.shields.io/badge/Dart-0175C2?style=flat-square&logo=dart&logoColor=white)
-![Android](https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=white)
-![iOS](https://img.shields.io/badge/iOS-000000?style=flat-square&logo=apple&logoColor=white)
-![WebSocket](https://img.shields.io/badge/WebSocket-realtime-407E8C?style=flat-square)
-![Offline First](https://img.shields.io/badge/offline--first-Outbox-083A4F?style=flat-square)
+<img src=".github/assets/wave.svg" width="100%" alt="">
 
-</div>
+## What lives here
 
----
+The app for the people who actually move the ships: **pilots, tug masters and field supervisors**. They get their tasks on it and report what really happened, and those reports are what keep the plan, the tracking and the AI feedback loop honest.
 
-## 📖 Overview
+A quay is not a friendly place for Wi-Fi, so the app is built to keep working when the signal disappears.
 
-The mobile app is used by **field executors — pilots, tug masters and supervisors** — to receive tasks and report actual operational status. It is built to keep working when the network does not.
+## What it does
 
-### Key features
-- 📥 **Task dispatch** — receive assigned tasks from confirmed operational plans.
-- 📍 **Status updates** — report actual times and progress; feeds tracking, deviations and the AI feedback loop.
-- 📴 **Offline-first Outbox** — actions are queued locally with idempotency keys and synced through `/sync/events` when back online.
-- 🔔 **Realtime** — WebSocket event, then a REST fetch of the full payload (no FCM / APNs push service).
-- 🔒 **Secure by design** — managed devices (MDM), per-app always-on VPN, split DNS `app.atlantech.io`.
+- **Receives tasks** that come out of confirmed operational plans.
+- **Reports actual status**, with real times and progress, which feed tracking, deviation logs and Part 3 of the AI.
+- **Works offline.** Every action goes into a local outbox with an idempotency key and syncs through `/sync/events` once the phone is back online. Nothing is lost and nothing is counted twice.
+- **Stays current.** A WebSocket event says something changed, then a REST call fetches the full payload. There is no FCM or APNs push service in the loop.
+- **Stays inside the port.** Phones are managed devices (MDM) with a per-app, always-on VPN and split DNS on `app.atlantech.io`.
 
----
-
-## 🛠️ Tech Stack
+## Stack
 
 | Area | Technology |
 |---|---|
-| Framework | Flutter (Dart) |
-| Platforms | Android · iOS |
-| Communication | REST over HTTPS · WebSocket (Laravel Reverb) |
-| Sync | Local Outbox, idempotent events |
-| Network | Per-app VPN through the port VPN gateway |
-| Backend | [ATLANTECH Port API](https://github.com/Atlantech-project/project-backend) (Laravel) |
+| Framework | Flutter, Dart `^3.11.5` |
+| Platforms | Android, iOS |
+| Talking to the server | REST over HTTPS, WebSocket (Laravel Reverb) |
+| Sync | Local outbox with idempotent events |
+| Network | Per-app VPN through the port's VPN gateway |
+| Backend | [ATLANTECH Port API](https://github.com/Atlantech-project/project-backend) |
 
----
+## Getting started
 
-## 🚀 Getting Started
-
-**Requirements:** Flutter SDK with Dart `^3.11.5`, Android Studio / Xcode.
+You'll need the Flutter SDK (Dart `^3.11.5`) and Android Studio or Xcode.
 
 ```bash
 git clone https://github.com/Atlantech-project/project-mobile.git
@@ -56,31 +61,26 @@ flutter pub get
 flutter run
 ```
 
-### 🧪 Tests & analysis
+Before you open a pull request:
+
 ```bash
-flutter test
 flutter analyze
+flutter test
 ```
 
----
+## Neighbours
 
-## 🔗 Related Repositories
+[PortHub](https://github.com/Atlantech-project/PortHub) &middot;
+[project-backend](https://github.com/Atlantech-project/project-backend) &middot;
+[project-ai](https://github.com/Atlantech-project/project-ai) &middot;
+[project-frontend](https://github.com/Atlantech-project/project-frontend)
 
-| | Repository |
-|---|---|
-| ⚓ Umbrella | [PortHub](https://github.com/Atlantech-project/PortHub) |
-| ⚙️ Backend | [project-backend](https://github.com/Atlantech-project/project-backend) |
-| 🧠 AI | [project-ai](https://github.com/Atlantech-project/project-ai) |
-| 🖥️ Frontend | [project-frontend](https://github.com/Atlantech-project/project-frontend) |
+## Crew
 
-## 👥 Mobile Team
+**Farouk Ahmed Farouk El-Balkiny**, Mobile App Developer
 
-- **Farouk Ahmed Farouk El-Balkiny** — Mobile App Developer
+<img src=".github/assets/wave.svg" width="100%" alt="">
 
----
-
-<div align="center">
-
-⚓ *ATLANTECH — Intelligent Port Operations* · Mansoura University · Graduation Project 2026
-
-</div>
+<p align="center">
+  <sub>ATLANTECH, Intelligent Port Operations &middot; Mansoura University &middot; Graduation Project 2026</sub>
+</p>
