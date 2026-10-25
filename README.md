@@ -17,7 +17,6 @@
   <img src="https://img.shields.io/badge/Flutter-framework-407E8C?style=flat-square&logo=flutter&logoColor=E5E1DD&labelColor=083A4F" alt="Flutter">
   <img src="https://img.shields.io/badge/Dart-3.11-407E8C?style=flat-square&logo=dart&logoColor=E5E1DD&labelColor=083A4F" alt="Dart">
   <img src="https://img.shields.io/badge/Android-supported-407E8C?style=flat-square&logo=android&logoColor=E5E1DD&labelColor=083A4F" alt="Android">
-  <img src="https://img.shields.io/badge/iOS-supported-407E8C?style=flat-square&logo=apple&logoColor=E5E1DD&labelColor=083A4F" alt="iOS">
   <img src="https://img.shields.io/badge/WebSocket-realtime-407E8C?style=flat-square&labelColor=083A4F" alt="WebSocket">
   <img src="https://img.shields.io/badge/offline--first-outbox-407E8C?style=flat-square&labelColor=083A4F" alt="offline-first">
 </p>
