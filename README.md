@@ -42,7 +42,7 @@ A quay is not a friendly place for Wi-Fi, so the app is built to keep working wh
 | Area | Technology |
 |---|---|
 | Framework | Flutter, Dart `^3.11.5` |
-| Platforms | Android, iOS |
+| Platforms | Android |
 | Talking to the server | REST over HTTPS, WebSocket (Laravel Reverb) |
 | Sync | Local outbox with idempotent events |
 | Network | Per-app VPN through the port's VPN gateway |
