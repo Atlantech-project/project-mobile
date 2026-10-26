@@ -11,8 +11,6 @@ class AccessDeniedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     return DevPlaceholderScreen(
-      screenId: 'P-20',
-      taskId: 'MB-P20',
       title: l10n.titleAccessDenied,
       showNavigation: false,
       showBack: false,

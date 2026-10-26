@@ -1,7 +1,6 @@
 {
   "@@locale": "ar",
   "appName": "ATLANTECH",
-  "fieldOperations": "العمليات الميدانية",
   "titlePortIdentification": "تحديد الميناء",
   "titleSignIn": "تسجيل الدخول",
   "titleMyTasks": "مهامي",
@@ -28,5 +27,5 @@
   "devMockSignInUnsupported": "دخول تجريبي بدور غير مدعوم",
   "devMockSignOut": "خروج تجريبي",
   "devOpenSampleTask": "فتح مهمة تجريبية",
-  "placeholderNote": "سيتم بناء هذه الشاشة في المهمة {taskId}"
+  "placeholderNote": "سيتم بناء هذه الشاشة في مهمة لاحقة."
 }

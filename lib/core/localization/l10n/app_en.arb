@@ -1,7 +1,6 @@
 {
   "@@locale": "en",
   "appName": "ATLANTECH",
-  "fieldOperations": "Field Operations",
   "titlePortIdentification": "Port Identification",
   "titleSignIn": "Sign in",
   "titleMyTasks": "My Tasks",
@@ -31,13 +30,5 @@
   "devMockSignInUnsupported": "Mock sign-in as unsupported role",
   "devMockSignOut": "Mock sign-out",
   "devOpenSampleTask": "Open sample task",
-  "placeholderNote": "This screen will be built in task {taskId}",
-  "@placeholderNote": {
-    "placeholders": {
-      "taskId": {
-        "type": "String",
-        "example": "MB-P54"
-      }
-    }
-  }
+  "placeholderNote": "This screen will be built in a later task."
 }

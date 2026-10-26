@@ -11,8 +11,6 @@ class NotificationsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     return DevPlaceholderScreen(
-      screenId: 'P-19',
-      taskId: 'MB-P19',
       title: l10n.titleNotifications,
       showNavigation: false,
       showBack: true,

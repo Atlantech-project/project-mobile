@@ -11,8 +11,6 @@ class SyncOutboxScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     return DevPlaceholderScreen(
-      screenId: 'P-56',
-      taskId: 'MB-P56',
       title: l10n.titleSyncOutbox,
       showNavigation: true,
       showBack: true,

@@ -15,8 +15,6 @@ class LoginScreen extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     final session = getIt<SessionState>();
     return DevPlaceholderScreen(
-      screenId: 'P-52',
-      taskId: 'MB-P52',
       title: l10n.titleSignIn,
       devActions: [
         // DEV-ONLY: the real sign-in comes in MB-P52.

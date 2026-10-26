@@ -11,8 +11,6 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     return DevPlaceholderScreen(
-      screenId: 'P-58',
-      taskId: 'MB-P58',
       title: l10n.titleSettings,
       showNavigation: false,
       showBack: true,

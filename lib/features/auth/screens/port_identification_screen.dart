@@ -16,8 +16,6 @@ class PortIdentificationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     return DevPlaceholderScreen(
-      screenId: 'P-53',
-      taskId: 'MB-P53',
       title: l10n.titlePortIdentification,
       devActions: [
         // DEV-ONLY: real port identification comes in MB-P53.

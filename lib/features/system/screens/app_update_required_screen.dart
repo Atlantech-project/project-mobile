@@ -11,8 +11,6 @@ class AppUpdateRequiredScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     return DevPlaceholderScreen(
-      screenId: 'P-57',
-      taskId: 'MB-P57',
       title: l10n.titleAppUpdateRequired,
       showNavigation: false,
       showBack: false,

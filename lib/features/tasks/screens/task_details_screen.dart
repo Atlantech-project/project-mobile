@@ -14,8 +14,6 @@ class TaskDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     return DevPlaceholderScreen(
-      screenId: 'P-55',
-      taskId: 'MB-P55',
       title: l10n.titleTaskDetails,
       showNavigation: true,
       showBack: true,

@@ -12,9 +12,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appName => 'ATLANTECH';
 
   @override
-  String get fieldOperations => 'Field Operations';
-
-  @override
   String get titlePortIdentification => 'Port Identification';
 
   @override
@@ -93,7 +90,5 @@ class AppLocalizationsEn extends AppLocalizations {
   String get devOpenSampleTask => 'Open sample task';
 
   @override
-  String placeholderNote(String taskId) {
-    return 'This screen will be built in task $taskId';
-  }
+  String get placeholderNote => 'This screen will be built in a later task.';
 }

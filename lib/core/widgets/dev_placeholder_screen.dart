@@ -9,30 +9,23 @@ import '../localization/locale_cubit.dart';
 import '../responsive/responsive.dart';
 import '../router/app_routes.dart';
 import '../router/session_state.dart';
-import '../theme/app_colors.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_text_styles.dart';
 import 'app_card.dart';
-import 'app_footer.dart';
 import 'app_header.dart';
-import 'app_ltr.dart';
 import 'app_scaffold.dart';
 
-/// DEV-ONLY: a stand-in for a screen that is not built yet. Shows the screen
-/// ID, the task that will build it, and dev buttons to walk the redirect flow.
+/// DEV-ONLY: a stand-in for a screen that is not built yet, with dev buttons
+/// to walk the redirect flow.
 class DevPlaceholderScreen extends StatelessWidget {
   const DevPlaceholderScreen({
     super.key,
-    required this.screenId,
-    required this.taskId,
     required this.title,
     this.devActions = const [],
     this.showNavigation = false,
     this.showBack = false,
   });
 
-  final String screenId;
-  final String taskId;
   final String title;
 
   /// DEV-ONLY buttons that drive [SessionState] or navigation.
@@ -52,9 +45,7 @@ class DevPlaceholderScreen extends StatelessWidget {
     return AppScaffold(
       header: AppHeader(
         title: title,
-        subtitle: role == null
-            ? l10n.fieldOperations
-            : '${_roleLabel(l10n, role)} · ${l10n.fieldOperations}',
+        subtitle: role == null ? null : _roleLabel(l10n, role),
         onBack: showBack ? () => _back(context) : null,
         actions: [
           if (showNavigation) ...[
@@ -88,27 +79,14 @@ class DevPlaceholderScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 spacing: AppSpacing.s5,
                 children: [
-                  AppIdText(
-                    screenId,
-                    style: AppTextStyles.numberM.copyWith(
-                      color: AppColors.textAccent,
-                    ),
-                  ),
                   Text(title, style: AppTextStyles.tabletH2),
-                  Text(
-                    l10n.placeholderNote(taskId),
-                    style: AppTextStyles.tabletBody,
-                  ),
+                  Text(l10n.placeholderNote, style: AppTextStyles.tabletBody),
                   ...devActions,
                 ],
               ),
             ),
           ),
         ),
-      ),
-      footer: AppFooter(
-        start: '${l10n.appName} · ${l10n.fieldOperations}',
-        end: screenId,
       ),
     );
   }

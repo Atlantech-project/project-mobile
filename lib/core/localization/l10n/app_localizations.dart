@@ -104,12 +104,6 @@ abstract class AppLocalizations {
   /// **'ATLANTECH'**
   String get appName;
 
-  /// No description provided for @fieldOperations.
-  ///
-  /// In en, this message translates to:
-  /// **'Field Operations'**
-  String get fieldOperations;
-
   /// No description provided for @titlePortIdentification.
   ///
   /// In en, this message translates to:
@@ -269,8 +263,8 @@ abstract class AppLocalizations {
   /// No description provided for @placeholderNote.
   ///
   /// In en, this message translates to:
-  /// **'This screen will be built in task {taskId}'**
-  String placeholderNote(String taskId);
+  /// **'This screen will be built in a later task.'**
+  String get placeholderNote;
 }
 
 class _AppLocalizationsDelegate
