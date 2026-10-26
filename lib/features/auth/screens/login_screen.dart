@@ -16,6 +16,7 @@ class LoginScreen extends StatelessWidget {
     final session = getIt<SessionState>();
     return DevPlaceholderScreen(
       title: l10n.titleSignIn,
+      backdrop: true,
       devActions: [
         // DEV-ONLY: the real sign-in comes in MB-P52.
         AppButton.primary(

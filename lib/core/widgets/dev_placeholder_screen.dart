@@ -9,6 +9,7 @@ import '../localization/locale_cubit.dart';
 import '../responsive/responsive.dart';
 import '../router/app_routes.dart';
 import '../router/session_state.dart';
+import '../theme/app_shadows.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_text_styles.dart';
 import 'app_card.dart';
@@ -24,6 +25,7 @@ class DevPlaceholderScreen extends StatelessWidget {
     this.devActions = const [],
     this.showNavigation = false,
     this.showBack = false,
+    this.backdrop = false,
   });
 
   final String title;
@@ -37,12 +39,16 @@ class DevPlaceholderScreen extends StatelessWidget {
   /// Show the header back button.
   final bool showBack;
 
+  /// Port photo behind the content, as on the sign-in screen.
+  final bool backdrop;
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final role = getIt<SessionState>().role;
 
     return AppScaffold(
+      backdrop: backdrop,
       header: AppHeader(
         title: title,
         subtitle: role == null ? null : _roleLabel(l10n, role),
@@ -67,26 +73,46 @@ class DevPlaceholderScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsetsDirectional.all(context.layout.margin),
-        child: Align(
-          alignment: AlignmentDirectional.topCenter,
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 640),
-            child: AppCard(
-              padding: const EdgeInsetsDirectional.all(AppSpacing.s7),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                spacing: AppSpacing.s5,
-                children: [
-                  Text(title, style: AppTextStyles.tabletH2),
-                  Text(l10n.placeholderNote, style: AppTextStyles.tabletBody),
-                  ...devActions,
-                ],
+      body: LayoutBuilder(
+        builder: (context, box) {
+          final margin = context.layout.margin;
+          final card = AppCard(
+            padding: const EdgeInsetsDirectional.all(AppSpacing.s7),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              spacing: AppSpacing.s5,
+              children: [
+                Text(title, style: AppTextStyles.tabletH2),
+                Text(l10n.placeholderNote, style: AppTextStyles.tabletBody),
+                ...devActions,
+              ],
+            ),
+          );
+          return SingleChildScrollView(
+            padding: EdgeInsetsDirectional.all(margin),
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: box.maxHeight - 2 * margin,
+              ),
+              child: Align(
+                alignment: backdrop
+                    ? AlignmentDirectional.center
+                    : AlignmentDirectional.topCenter,
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 640),
+                  child: backdrop
+                      ? DecoratedBox(
+                          decoration: BoxDecoration(
+                            boxShadow: AppShadows.elevation3,
+                          ),
+                          child: card,
+                        )
+                      : card,
+                ),
               ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }
