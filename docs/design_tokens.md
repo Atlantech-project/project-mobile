@@ -116,3 +116,23 @@ Dialogs: Elevation/3 over a 33% navy/950 scrim.
 
 - Tablet frame 1280 × 800: 8 columns, 16 gutter, 24 margin. Header 88, footer 40, body 672.
 - 4 px grid. Line heights are multiples of 2, spacing multiples of 4.
+
+## 7. App-only tokens (MB-S01, not in Figma)
+
+Semantic tokens built from the primitives above for screens that have no Figma frame.
+
+| Token | → Primitive | Use |
+|---|---|---|
+| cover/glow | navy/800 | Splash: centre of the radial background |
+| cover/edge | navy/950 | Splash: edges; Android launch screen colour |
+| cover/sea | teal/500 | Splash: sea layers (20–28% opacity) |
+| cover/sea-deep | navy/800 | Splash: front sea layer (85%) |
+| cover/text | neutral/200 | Splash: status line (75%) |
+| cover/accent | gold/400 | Splash: waterline, glint, progress hairline |
+| cover/track | teal/200 | Splash: progress track (22%) |
+| loading/empty | neutral/300 | Loading symbol before it fills; empty/error symbol |
+| loading/water-back | teal/300 | Loading: back wave |
+| loading/water | navy/800 | Loading: front wave |
+
+Sizes: splash lockup max 360, progress hairline 120 × 1; loading symbol 120 / 72 / 40; state badge 40 (icon 22), compact state circle 72 (icon 32), state text column max 480.
+

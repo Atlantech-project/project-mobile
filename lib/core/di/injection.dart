@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 
 import '../localization/locale_cubit.dart';
+import '../network/connection_cubit.dart';
 import '../router/app_router.dart';
 import '../router/session_state.dart';
 
@@ -11,5 +12,6 @@ void setupInjection() {
   getIt
     ..registerLazySingleton<SessionState>(SessionState.new)
     ..registerLazySingleton<LocaleCubit>(LocaleCubit.new)
+    ..registerLazySingleton<ConnectionCubit>(ConnectionCubit.new)
     ..registerLazySingleton<AppRouter>(() => AppRouter(getIt<SessionState>()));
 }

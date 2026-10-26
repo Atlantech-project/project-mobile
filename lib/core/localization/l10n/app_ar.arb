@@ -27,5 +27,21 @@
   "devMockSignInUnsupported": "دخول تجريبي بدور غير مدعوم",
   "devMockSignOut": "خروج تجريبي",
   "devOpenSampleTask": "فتح مهمة تجريبية",
-  "placeholderNote": "سيتم بناء هذه الشاشة في مهمة لاحقة."
+  "placeholderNote": "سيتم بناء هذه الشاشة في مهمة لاحقة.",
+  "splashStatus": "جارٍ تجهيز مساحة العمل",
+  "loading": "جارٍ التحميل",
+  "retryAction": "إعادة المحاولة",
+  "stateEmptyTitle": "لا يوجد شيء هنا بعد",
+  "stateEmptyMessage": "عندما تتوفر بيانات ستظهر هنا.",
+  "stateErrorTitle": "حدث خطأ ما",
+  "stateErrorMessage": "تعذّر تحميل هذه الصفحة. حاول مرة أخرى بعد قليل.",
+  "stateOfflineTitle": "أنت غير متصل",
+  "stateOfflineMessage": "لا توجد بيانات محفوظة على هذا الجهاز بعد. اتصل بشبكة الميناء وحاول مرة أخرى.",
+  "pageNotFoundTitle": "الصفحة غير موجودة",
+  "pageNotFoundMessage": "هذه الصفحة غير موجودة أو تم نقلها.",
+  "backToStartAction": "العودة للبداية",
+  "devPreviewStates": "معاينة حالات الصفحة",
+  "devStateEmpty": "فارغة",
+  "devStateError": "خطأ",
+  "devStateOffline": "غير متصل"
 }

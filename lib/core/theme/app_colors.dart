@@ -65,6 +65,21 @@ abstract final class AppColors {
   static const Color statusNeutralBorder = AppPalette.neutral300;
   static const Color statusNeutralFg = AppPalette.neutral700;
 
+  // brand cover: the splash screen, the one dark brand moment of the app.
+  // The reversed lockup sits on navy that deepens towards the edges.
+  static const Color coverGlow = AppPalette.navy800;
+  static const Color coverEdge = AppPalette.navy950;
+  static const Color coverSea = AppPalette.teal500;
+  static const Color coverSeaDeep = AppPalette.navy800;
+  static const Color coverText = AppPalette.neutral200;
+  static const Color coverAccent = AppPalette.gold400;
+  static const Color coverTrack = AppPalette.teal200;
+
+  // loading: the brand symbol filling with water.
+  static const Color loadingEmpty = AppPalette.neutral300;
+  static const Color loadingWaterBack = AppPalette.teal300;
+  static const Color loadingWater = AppPalette.navy800;
+
   /// Shadow base for every elevation style (navy/800).
   static const Color shadow = AppPalette.navy800;
 }

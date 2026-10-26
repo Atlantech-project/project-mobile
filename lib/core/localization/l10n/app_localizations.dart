@@ -265,6 +265,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This screen will be built in a later task.'**
   String get placeholderNote;
+
+  /// No description provided for @splashStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Preparing your workspace'**
+  String get splashStatus;
+
+  /// No description provided for @loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading'**
+  String get loading;
+
+  /// No description provided for @retryAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get retryAction;
+
+  /// No description provided for @stateEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing here yet'**
+  String get stateEmptyTitle;
+
+  /// No description provided for @stateEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'When there is something to show, it will appear here.'**
+  String get stateEmptyMessage;
+
+  /// No description provided for @stateErrorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong'**
+  String get stateErrorTitle;
+
+  /// No description provided for @stateErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This page could not be loaded. Try again in a moment.'**
+  String get stateErrorMessage;
+
+  /// No description provided for @stateOfflineTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'You are offline'**
+  String get stateOfflineTitle;
+
+  /// No description provided for @stateOfflineMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing is saved on this device yet. Connect to the port network and try again.'**
+  String get stateOfflineMessage;
+
+  /// No description provided for @pageNotFoundTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Page not found'**
+  String get pageNotFoundTitle;
+
+  /// No description provided for @pageNotFoundMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This page does not exist or has moved.'**
+  String get pageNotFoundMessage;
+
+  /// No description provided for @backToStartAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to start'**
+  String get backToStartAction;
+
+  /// No description provided for @devPreviewStates.
+  ///
+  /// In en, this message translates to:
+  /// **'Preview page states'**
+  String get devPreviewStates;
+
+  /// No description provided for @devStateEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Empty'**
+  String get devStateEmpty;
+
+  /// No description provided for @devStateError.
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get devStateError;
+
+  /// No description provided for @devStateOffline.
+  ///
+  /// In en, this message translates to:
+  /// **'Offline'**
+  String get devStateOffline;
 }
 
 class _AppLocalizationsDelegate

@@ -8,6 +8,8 @@ import '../../features/settings/screens/settings_screen.dart';
 import '../../features/sync/screens/sync_outbox_screen.dart';
 import '../../features/system/screens/access_denied_screen.dart';
 import '../../features/system/screens/app_update_required_screen.dart';
+import '../../features/system/screens/page_not_found_screen.dart';
+import '../../features/system/screens/splash_screen.dart';
 import '../../features/tasks/screens/my_tasks_screen.dart';
 import '../../features/tasks/screens/task_details_screen.dart';
 import 'app_routes.dart';
@@ -21,10 +23,16 @@ class AppRouter {
   final SessionState _session;
 
   late final GoRouter router = GoRouter(
-    initialLocation: AppRoutes.portPath,
+    initialLocation: AppRoutes.splashPath,
     refreshListenable: _session,
     redirect: _redirect,
+    errorBuilder: (context, state) => const PageNotFoundScreen(),
     routes: [
+      GoRoute(
+        path: AppRoutes.splashPath,
+        name: AppRoutes.splashName,
+        builder: (context, state) => const SplashScreen(),
+      ),
       GoRoute(
         path: AppRoutes.portPath,
         name: AppRoutes.portName,
@@ -79,6 +87,10 @@ class AppRouter {
 
   String? _redirect(BuildContext context, GoRouterState state) {
     final location = state.matchedLocation;
+
+    // 0. The splash plays first; it then goes to P-53 and the rules below
+    // pick the real first page.
+    if (location == AppRoutes.splashPath) return null;
 
     // 1. A forced update blocks everything else.
     if (_session.updateRequired) {

@@ -91,4 +91,55 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get placeholderNote => 'This screen will be built in a later task.';
+
+  @override
+  String get splashStatus => 'Preparing your workspace';
+
+  @override
+  String get loading => 'Loading';
+
+  @override
+  String get retryAction => 'Try again';
+
+  @override
+  String get stateEmptyTitle => 'Nothing here yet';
+
+  @override
+  String get stateEmptyMessage =>
+      'When there is something to show, it will appear here.';
+
+  @override
+  String get stateErrorTitle => 'Something went wrong';
+
+  @override
+  String get stateErrorMessage =>
+      'This page could not be loaded. Try again in a moment.';
+
+  @override
+  String get stateOfflineTitle => 'You are offline';
+
+  @override
+  String get stateOfflineMessage =>
+      'Nothing is saved on this device yet. Connect to the port network and try again.';
+
+  @override
+  String get pageNotFoundTitle => 'Page not found';
+
+  @override
+  String get pageNotFoundMessage => 'This page does not exist or has moved.';
+
+  @override
+  String get backToStartAction => 'Back to start';
+
+  @override
+  String get devPreviewStates => 'Preview page states';
+
+  @override
+  String get devStateEmpty => 'Empty';
+
+  @override
+  String get devStateError => 'Error';
+
+  @override
+  String get devStateOffline => 'Offline';
 }

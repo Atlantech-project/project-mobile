@@ -46,4 +46,23 @@ abstract final class AppSizes {
 
   /// ATLANTECH logo in the application header (148 × 22.8).
   static const double logoHeaderWidth = 148;
+
+  /// Widest the splash lockup gets (tablet). Phones use a share of the width.
+  static const double splashLockupMax = 360;
+
+  /// Gold progress hairline under the splash lockup.
+  static const double splashProgressWidth = 120;
+
+  /// Loading symbol: full page, inside a section, inline.
+  static const double loadingLg = 120;
+  static const double loadingMd = 72;
+  static const double loadingSm = 40;
+
+  /// Empty and error states: the icon circle (compact), its icon, the badge
+  /// on the symbol (full page) and the widest the text column gets.
+  static const double stateArt = 72;
+  static const double stateArtIcon = 32;
+  static const double stateBadge = 40;
+  static const double stateBadgeIcon = 22;
+  static const double stateTextMax = 480;
 }

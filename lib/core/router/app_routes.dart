@@ -1,5 +1,9 @@
 /// Route paths and names. Screen IDs follow the UI spec.
 abstract final class AppRoutes {
+  // Splash (first screen at every start)
+  static const String splashPath = '/splash';
+  static const String splashName = 'splash';
+
   // P-53
   static const String portPath = '/port';
   static const String portName = 'port';
