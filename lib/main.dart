@@ -3,8 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'app.dart';
 import 'core/di/injection.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  setupInjection();
+  await setupInjection();
   runApp(const AtlantechApp());
 }
