@@ -13,7 +13,9 @@ import '../theme/app_shadows.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_text_styles.dart';
 import 'app_card.dart';
+import 'app_connection_status.dart';
 import 'app_header.dart';
+import 'app_icon_button.dart';
 import 'app_scaffold.dart';
 
 /// DEV-ONLY: a stand-in for a screen that is not built yet, with dev buttons
@@ -66,9 +68,13 @@ class DevPlaceholderScreen extends StatelessWidget {
               onPressed: () => context.push(AppRoutes.settingsPath),
             ),
           ],
-          AppHeaderAction(
+          // Before sign-in the header shows the connection state (info only).
+          // DEV-ONLY: fixed to online until connectivity lands (MB-F2).
+          if (!showNavigation && !showBack)
+            const AppConnectionStatus(isOnline: true),
+          AppIconButton(
             icon: Icons.translate,
-            label: l10n.switchLanguage,
+            tooltip: l10n.switchLanguage,
             onPressed: () => context.read<LocaleCubit>().toggle(),
           ),
         ],

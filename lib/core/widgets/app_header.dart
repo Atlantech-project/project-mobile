@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import '../localization/l10n/app_localizations.dart';
 import '../responsive/responsive.dart';
 import '../theme/app_colors.dart';
-import '../theme/app_radius.dart';
 import '../theme/app_sizes.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_text_styles.dart';
 import 'app_button.dart';
+import 'app_icon_button.dart';
 import 'app_logo.dart';
 
 /// Figma: Application header (245:7008, 88 tall). The app has no bottom
@@ -117,7 +117,7 @@ class AppHeaderAction extends StatelessWidget {
     if (context.isTablet) {
       return AppButton.outline(label: label, icon: icon, onPressed: onPressed);
     }
-    return _IconSquareButton(icon: icon, tooltip: label, onPressed: onPressed);
+    return AppIconButton(icon: icon, tooltip: label, onPressed: onPressed);
   }
 }
 
@@ -129,52 +129,10 @@ class _BackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Icons.arrow_back mirrors automatically in RTL.
-    return _IconSquareButton(
+    return AppIconButton(
       icon: Icons.arrow_back,
       tooltip: AppLocalizations.of(context).backAction,
       onPressed: onPressed,
-    );
-  }
-}
-
-class _IconSquareButton extends StatelessWidget {
-  const _IconSquareButton({
-    required this.icon,
-    required this.tooltip,
-    required this.onPressed,
-  });
-
-  final IconData icon;
-  final String tooltip;
-  final VoidCallback? onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    final enabled = onPressed != null;
-    return Tooltip(
-      message: tooltip,
-      child: Material(
-        color: enabled ? AppColors.bgSurface : AppColors.bgSubtle,
-        shape: RoundedRectangleBorder(
-          borderRadius: AppRadius.smAll,
-          side: BorderSide(
-            color: enabled ? AppColors.borderStrong : AppColors.borderDefault,
-            width: AppSizes.borderThin,
-          ),
-        ),
-        clipBehavior: Clip.antiAlias,
-        child: InkWell(
-          onTap: onPressed,
-          child: SizedBox.square(
-            dimension: AppSizes.touch,
-            child: Icon(
-              icon,
-              size: AppSizes.iconMd,
-              color: enabled ? AppColors.textPrimary : AppColors.textMuted,
-            ),
-          ),
-        ),
-      ),
     );
   }
 }

@@ -33,15 +33,21 @@ class AppScaffold extends StatelessWidget {
       ],
     );
 
-    return Scaffold(
-      backgroundColor: AppColors.bgPage,
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            header,
-            Expanded(child: backdrop ? AppBackdrop(child: content) : content),
-          ],
+    // Android back pops to the previous page when there is one. On a root
+    // page (no page behind it) it does nothing, so the app never goes to the
+    // background by accident.
+    return PopScope(
+      canPop: !(ModalRoute.of(context)?.isFirst ?? true),
+      child: Scaffold(
+        backgroundColor: AppColors.bgPage,
+        body: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              header,
+              Expanded(child: backdrop ? AppBackdrop(child: content) : content),
+            ],
+          ),
         ),
       ),
     );

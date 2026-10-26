@@ -8,6 +8,7 @@ export 'app_connection_status.dart';
 export 'app_dialog.dart';
 export 'app_footer.dart';
 export 'app_header.dart';
+export 'app_icon_button.dart';
 export 'app_logo.dart';
 export 'app_ltr.dart';
 export 'app_notice.dart';
