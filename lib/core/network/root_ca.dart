@@ -28,10 +28,17 @@ abstract final class RootCa {
     return SecurityContext(withTrustedRoots: false);
   }
 
+  static final _pemHeader = RegExp(
+    r'^-----BEGIN CERTIFICATE-----\s*$',
+    multiLine: true,
+  );
+
   static Future<List<int>?> _loadPem() async {
     try {
       final text = await rootBundle.loadString(AppConfig.rootCaAsset);
-      if (!text.contains('-----BEGIN CERTIFICATE-----')) return null;
+      // Match the header on its own line: the placeholder file only mentions
+      // it inside a comment.
+      if (!_pemHeader.hasMatch(text)) return null;
       return utf8.encode(text);
     } on FlutterError {
       return null;
