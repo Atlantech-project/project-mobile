@@ -30,5 +30,21 @@
   "devMockSignInUnsupported": "Mock sign-in as unsupported role",
   "devMockSignOut": "Mock sign-out",
   "devOpenSampleTask": "Open sample task",
-  "placeholderNote": "This screen will be built in a later task."
+  "placeholderNote": "This screen will be built in a later task.",
+  "splashStatus": "Preparing your workspace",
+  "loading": "Loading",
+  "retryAction": "Try again",
+  "stateEmptyTitle": "Nothing here yet",
+  "stateEmptyMessage": "When there is something to show, it will appear here.",
+  "stateErrorTitle": "Something went wrong",
+  "stateErrorMessage": "This page could not be loaded. Try again in a moment.",
+  "stateOfflineTitle": "You are offline",
+  "stateOfflineMessage": "Nothing is saved on this device yet. Connect to the port network and try again.",
+  "pageNotFoundTitle": "Page not found",
+  "pageNotFoundMessage": "This page does not exist or has moved.",
+  "backToStartAction": "Back to start",
+  "devPreviewStates": "Preview page states",
+  "devStateEmpty": "Empty",
+  "devStateError": "Error",
+  "devStateOffline": "Offline"
 }

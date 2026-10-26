@@ -25,6 +25,7 @@ Read this file fully before any task. Detailed docs live in `docs/`:
 | Local storage | hive_ce, encrypted boxes (added in MB-F3) |
 | Secure storage | flutter_secure_storage (added in MB-F3) |
 | Localization | flutter_localizations + intl + gen-l10n (ARB files) |
+| Connectivity | connectivity_plus — `ConnectionCubit` in `core/network/` (added in MB-S01) |
 
 **Never use:** Riverpod, GetX, Provider-as-state, Drift, Isar, FCM/APNs/any push service, the `google_fonts` package (fonts are bundled because the app runs on a closed port network).
 
@@ -80,6 +81,8 @@ lib/
 - Light theme only.
 - Fonts: Montserrat (headings, numbers), Inter (everything else), Roboto Mono (IDs like PT-A-0109, IMO). Arabic text falls back to the Android system font — this is intended by the design system; do not add an Arabic font.
 - Shared widgets live in `core/widgets/` with the `App` prefix (`AppButton`, `AppStatusBadge`, …). Screens compose these; they do not restyle them.
+- **Page states (MB-S01):** a page that loads data puts its body in `AppStateBody(status: …)`; its Cubit state carries an `AppViewStatus` (loading, ready, empty, error, offline). Never build a spinner or an empty/error layout by hand. Full pages show the brand symbol (`AppLoadingView`, `AppStateView`); inside a card or list pass `compact: true` (icon in a circle). For known progress pass `value` to `AppLoadingIndicator`.
+- The splash (`/splash`, `features/system/screens/splash_screen.dart`) is the only dark screen. It uses the `cover*` colour tokens; no other screen may use them.
 - When building UI from Figma: use the Figma MCP (`get_design_context`, `get_screenshot`) on the exact node, then **adapt** the result to our tokens and `App*` widgets. Never paste generated code as-is.
 
 ### Figma node map (UI Design page)

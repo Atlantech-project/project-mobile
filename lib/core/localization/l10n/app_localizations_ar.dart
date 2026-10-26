@@ -91,4 +91,54 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get placeholderNote => 'سيتم بناء هذه الشاشة في مهمة لاحقة.';
+
+  @override
+  String get splashStatus => 'جارٍ تجهيز مساحة العمل';
+
+  @override
+  String get loading => 'جارٍ التحميل';
+
+  @override
+  String get retryAction => 'إعادة المحاولة';
+
+  @override
+  String get stateEmptyTitle => 'لا يوجد شيء هنا بعد';
+
+  @override
+  String get stateEmptyMessage => 'عندما تتوفر بيانات ستظهر هنا.';
+
+  @override
+  String get stateErrorTitle => 'حدث خطأ ما';
+
+  @override
+  String get stateErrorMessage =>
+      'تعذّر تحميل هذه الصفحة. حاول مرة أخرى بعد قليل.';
+
+  @override
+  String get stateOfflineTitle => 'أنت غير متصل';
+
+  @override
+  String get stateOfflineMessage =>
+      'لا توجد بيانات محفوظة على هذا الجهاز بعد. اتصل بشبكة الميناء وحاول مرة أخرى.';
+
+  @override
+  String get pageNotFoundTitle => 'الصفحة غير موجودة';
+
+  @override
+  String get pageNotFoundMessage => 'هذه الصفحة غير موجودة أو تم نقلها.';
+
+  @override
+  String get backToStartAction => 'العودة للبداية';
+
+  @override
+  String get devPreviewStates => 'معاينة حالات الصفحة';
+
+  @override
+  String get devStateEmpty => 'فارغة';
+
+  @override
+  String get devStateError => 'خطأ';
+
+  @override
+  String get devStateOffline => 'غير متصل';
 }

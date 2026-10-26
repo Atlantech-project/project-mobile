@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand cover navy (navy/950), the edge colour of the Flutter splash,
+         so the system launch screen hands over to it without a flash. -->
+    <color name="splash_background">#052736</color>
+</resources>
