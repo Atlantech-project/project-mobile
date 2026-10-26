@@ -7,7 +7,8 @@ import '../theme/app_sizes.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_text_styles.dart';
 
-/// Figma: header "Connection" (245:7739). A dot plus a text label.
+/// Figma: header "Connection" (245:7739). A dot plus a text label. Info only,
+/// not tappable; 56 tall to line up with the other header controls.
 class AppConnectionStatus extends StatelessWidget {
   const AppConnectionStatus({super.key, required this.isOnline});
 
@@ -17,7 +18,7 @@ class AppConnectionStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     return Container(
-      height: AppSizes.controlLg,
+      height: AppSizes.touch,
       padding: const EdgeInsetsDirectional.symmetric(horizontal: AppSpacing.s5),
       decoration: BoxDecoration(
         borderRadius: AppRadius.smAll,
