@@ -17,6 +17,8 @@ dependencies:
   go_router: ^17.5.0
   intl: ^0.20.2
   connectivity_plus: ^7.3.2
+  dio: ^5.11.1
+  package_info_plus: ^10.2.2
 
 dev_dependencies:
   flutter_test:
@@ -30,6 +32,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/brand/
+    - assets/certs/
 
   # Bundled fonts (no google_fonts package: the app runs on a closed port network).
   # Arabic falls back to the Android system font by design.
