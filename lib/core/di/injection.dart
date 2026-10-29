@@ -7,6 +7,7 @@ import '../network/dio_client.dart';
 import '../network/interceptors/app_version_interceptor.dart';
 import '../network/interceptors/auth_interceptor.dart';
 import '../network/interceptors/device_id_interceptor.dart';
+import '../network/interceptors/forbidden_interceptor.dart';
 import '../network/interceptors/idempotency_interceptor.dart';
 import '../network/root_ca.dart';
 import '../network/token_store.dart';
@@ -31,6 +32,7 @@ Future<void> setupInjection() async {
         interceptors: [
           AuthInterceptor(getIt<TokenStore>(), getIt<SessionState>()),
           AppVersionInterceptor(clientInfo.appVersion, getIt<SessionState>()),
+          ForbiddenInterceptor(getIt<TokenStore>(), getIt<SessionState>()),
           DeviceIdInterceptor(clientInfo.deviceId),
           IdempotencyInterceptor(),
         ],

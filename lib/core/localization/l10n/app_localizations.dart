@@ -391,6 +391,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Simulate update required (426)'**
   String get devMockUpdateRequired;
+
+  /// No description provided for @accessDeniedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'You do not have access to this'**
+  String get accessDeniedTitle;
+
+  /// No description provided for @accessDeniedPermissionMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your role or terminal scope does not allow this page or action. Changes saved on this device are kept.'**
+  String get accessDeniedPermissionMessage;
+
+  /// No description provided for @accessDeniedRoleMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This app is for Marine Pilots, Tug Masters and CT Supervisors. Your account has a different role, so sign in with a field account or use the web dashboard.'**
+  String get accessDeniedRoleMessage;
+
+  /// No description provided for @accessDeniedReasonLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason'**
+  String get accessDeniedReasonLabel;
+
+  /// No description provided for @accessDeniedReasonPermission.
+  ///
+  /// In en, this message translates to:
+  /// **'Role or terminal scope'**
+  String get accessDeniedReasonPermission;
+
+  /// No description provided for @accessDeniedReasonRole.
+  ///
+  /// In en, this message translates to:
+  /// **'Not a field role'**
+  String get accessDeniedReasonRole;
+
+  /// No description provided for @backToMyTasksAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to My Tasks'**
+  String get backToMyTasksAction;
+
+  /// No description provided for @signOutAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out'**
+  String get signOutAction;
+
+  /// No description provided for @devMockAccessDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Simulate access denied (403)'**
+  String get devMockAccessDenied;
 }
 
 class _AppLocalizationsDelegate

@@ -51,5 +51,14 @@
   "updateRequiredMessage": "This version of ATLANTECH is no longer supported by the port server. Ask your port IT team to install the latest version on this device. Changes saved on this device are kept.",
   "updateInstalledVersion": "Installed version",
   "updateRequiredVersion": "Required version",
-  "devMockUpdateRequired": "Simulate update required (426)"
+  "devMockUpdateRequired": "Simulate update required (426)",
+  "accessDeniedTitle": "You do not have access to this",
+  "accessDeniedPermissionMessage": "Your role or terminal scope does not allow this page or action. Changes saved on this device are kept.",
+  "accessDeniedRoleMessage": "This app is for Marine Pilots, Tug Masters and CT Supervisors. Your account has a different role, so sign in with a field account or use the web dashboard.",
+  "accessDeniedReasonLabel": "Reason",
+  "accessDeniedReasonPermission": "Role or terminal scope",
+  "accessDeniedReasonRole": "Not a field role",
+  "backToMyTasksAction": "Back to My Tasks",
+  "signOutAction": "Sign out",
+  "devMockAccessDenied": "Simulate access denied (403)"
 }

@@ -48,5 +48,14 @@
   "updateRequiredMessage": "لم يعد خادم الميناء يدعم هذا الإصدار من ATLANTECH. اطلب من فريق تقنية المعلومات بالميناء تثبيت أحدث إصدار على هذا الجهاز. التغييرات المحفوظة على الجهاز لن تُفقد.",
   "updateInstalledVersion": "الإصدار المثبّت",
   "updateRequiredVersion": "الإصدار المطلوب",
-  "devMockUpdateRequired": "محاكاة طلب التحديث (426)"
+  "devMockUpdateRequired": "محاكاة طلب التحديث (426)",
+  "accessDeniedTitle": "ليس لديك صلاحية لهذا",
+  "accessDeniedPermissionMessage": "دورك أو نطاق المحطة الخاص بك لا يسمح بهذه الصفحة أو هذا الإجراء. التغييرات المحفوظة على الجهاز لن تُفقد.",
+  "accessDeniedRoleMessage": "هذا التطبيق مخصص للمرشدين البحريين وقادة القاطرات ومشرفي محطة الحاويات. حسابك له دور مختلف، لذا سجّل الدخول بحساب ميداني أو استخدم لوحة التحكم على الويب.",
+  "accessDeniedReasonLabel": "السبب",
+  "accessDeniedReasonPermission": "الدور أو نطاق المحطة",
+  "accessDeniedReasonRole": "ليس دورًا ميدانيًا",
+  "backToMyTasksAction": "العودة إلى مهامي",
+  "signOutAction": "تسجيل الخروج",
+  "devMockAccessDenied": "محاكاة رفض الوصول (403)"
 }

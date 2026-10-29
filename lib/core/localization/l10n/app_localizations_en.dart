@@ -158,4 +158,33 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get devMockUpdateRequired => 'Simulate update required (426)';
+
+  @override
+  String get accessDeniedTitle => 'You do not have access to this';
+
+  @override
+  String get accessDeniedPermissionMessage =>
+      'Your role or terminal scope does not allow this page or action. Changes saved on this device are kept.';
+
+  @override
+  String get accessDeniedRoleMessage =>
+      'This app is for Marine Pilots, Tug Masters and CT Supervisors. Your account has a different role, so sign in with a field account or use the web dashboard.';
+
+  @override
+  String get accessDeniedReasonLabel => 'Reason';
+
+  @override
+  String get accessDeniedReasonPermission => 'Role or terminal scope';
+
+  @override
+  String get accessDeniedReasonRole => 'Not a field role';
+
+  @override
+  String get backToMyTasksAction => 'Back to My Tasks';
+
+  @override
+  String get signOutAction => 'Sign out';
+
+  @override
+  String get devMockAccessDenied => 'Simulate access denied (403)';
 }

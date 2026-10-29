@@ -157,4 +157,33 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get devMockUpdateRequired => 'محاكاة طلب التحديث (426)';
+
+  @override
+  String get accessDeniedTitle => 'ليس لديك صلاحية لهذا';
+
+  @override
+  String get accessDeniedPermissionMessage =>
+      'دورك أو نطاق المحطة الخاص بك لا يسمح بهذه الصفحة أو هذا الإجراء. التغييرات المحفوظة على الجهاز لن تُفقد.';
+
+  @override
+  String get accessDeniedRoleMessage =>
+      'هذا التطبيق مخصص للمرشدين البحريين وقادة القاطرات ومشرفي محطة الحاويات. حسابك له دور مختلف، لذا سجّل الدخول بحساب ميداني أو استخدم لوحة التحكم على الويب.';
+
+  @override
+  String get accessDeniedReasonLabel => 'السبب';
+
+  @override
+  String get accessDeniedReasonPermission => 'الدور أو نطاق المحطة';
+
+  @override
+  String get accessDeniedReasonRole => 'ليس دورًا ميدانيًا';
+
+  @override
+  String get backToMyTasksAction => 'العودة إلى مهامي';
+
+  @override
+  String get signOutAction => 'تسجيل الخروج';
+
+  @override
+  String get devMockAccessDenied => 'محاكاة رفض الوصول (403)';
 }
