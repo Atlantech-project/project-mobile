@@ -19,8 +19,18 @@ class AppVersionInterceptor extends Interceptor {
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
-    if (err.response?.statusCode == 426 && !_session.updateRequired) {
-      _session.setUpdateRequired(true);
+    final response = err.response;
+    if (response?.statusCode == 426 && !_session.updateRequired) {
+      final body = response?.data;
+      final minVersion = body is Map
+          ? body[ApiErrorFields.minAppVersion]
+          : null;
+      _session.setUpdateRequired(
+        true,
+        minAppVersion: minVersion is String && minVersion.isNotEmpty
+            ? minVersion
+            : null,
+      );
     }
     handler.next(err);
   }

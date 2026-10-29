@@ -142,4 +142,20 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get devStateOffline => 'Offline';
+
+  @override
+  String get updateRequiredTitle => 'Update the app to continue';
+
+  @override
+  String get updateRequiredMessage =>
+      'This version of ATLANTECH is no longer supported by the port server. Ask your port IT team to install the latest version on this device. Changes saved on this device are kept.';
+
+  @override
+  String get updateInstalledVersion => 'Installed version';
+
+  @override
+  String get updateRequiredVersion => 'Required version';
+
+  @override
+  String get devMockUpdateRequired => 'Simulate update required (426)';
 }

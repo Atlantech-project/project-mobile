@@ -46,5 +46,10 @@
   "devPreviewStates": "Preview page states",
   "devStateEmpty": "Empty",
   "devStateError": "Error",
-  "devStateOffline": "Offline"
+  "devStateOffline": "Offline",
+  "updateRequiredTitle": "Update the app to continue",
+  "updateRequiredMessage": "This version of ATLANTECH is no longer supported by the port server. Ask your port IT team to install the latest version on this device. Changes saved on this device are kept.",
+  "updateInstalledVersion": "Installed version",
+  "updateRequiredVersion": "Required version",
+  "devMockUpdateRequired": "Simulate update required (426)"
 }

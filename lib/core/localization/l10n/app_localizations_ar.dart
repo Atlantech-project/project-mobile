@@ -141,4 +141,20 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get devStateOffline => 'غير متصل';
+
+  @override
+  String get updateRequiredTitle => 'حدّث التطبيق للمتابعة';
+
+  @override
+  String get updateRequiredMessage =>
+      'لم يعد خادم الميناء يدعم هذا الإصدار من ATLANTECH. اطلب من فريق تقنية المعلومات بالميناء تثبيت أحدث إصدار على هذا الجهاز. التغييرات المحفوظة على الجهاز لن تُفقد.';
+
+  @override
+  String get updateInstalledVersion => 'الإصدار المثبّت';
+
+  @override
+  String get updateRequiredVersion => 'الإصدار المطلوب';
+
+  @override
+  String get devMockUpdateRequired => 'محاكاة طلب التحديث (426)';
 }

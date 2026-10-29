@@ -361,6 +361,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Offline'**
   String get devStateOffline;
+
+  /// No description provided for @updateRequiredTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Update the app to continue'**
+  String get updateRequiredTitle;
+
+  /// No description provided for @updateRequiredMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This version of ATLANTECH is no longer supported by the port server. Ask your port IT team to install the latest version on this device. Changes saved on this device are kept.'**
+  String get updateRequiredMessage;
+
+  /// No description provided for @updateInstalledVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'Installed version'**
+  String get updateInstalledVersion;
+
+  /// No description provided for @updateRequiredVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'Required version'**
+  String get updateRequiredVersion;
+
+  /// No description provided for @devMockUpdateRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Simulate update required (426)'**
+  String get devMockUpdateRequired;
 }
 
 class _AppLocalizationsDelegate
