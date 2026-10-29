@@ -17,6 +17,7 @@ class SessionState extends ChangeNotifier {
   bool _isAuthenticated = false;
   FieldRole? _role;
   bool _updateRequired = false;
+  String? _minAppVersion;
 
   bool get portIdentified => _portIdentified;
   bool get isAuthenticated => _isAuthenticated;
@@ -24,6 +25,10 @@ class SessionState extends ChangeNotifier {
 
   /// Set by the HTTP 426 handler (MB-F2).
   bool get updateRequired => _updateRequired;
+
+  /// The lowest app version the server accepts, from the 426 body
+  /// (`min_app_version`). `null` when the server did not send it.
+  String? get minAppVersion => _minAppVersion;
 
   void markPortIdentified() {
     _portIdentified = true;
@@ -42,8 +47,9 @@ class SessionState extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setUpdateRequired(bool value) {
+  void setUpdateRequired(bool value, {String? minAppVersion}) {
     _updateRequired = value;
+    _minAppVersion = value ? minAppVersion : null;
     notifyListeners();
   }
 }

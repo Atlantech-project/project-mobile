@@ -28,6 +28,15 @@ class PortIdentificationScreen extends StatelessWidget {
             context.go(AppRoutes.loginPath);
           },
         ),
+        // DEV-ONLY (MB-P53): shows P-57 the way a 426 answer would.
+        AppButton.outline(
+          label: l10n.devMockUpdateRequired,
+          expand: true,
+          onPressed: () => getIt<SessionState>().setUpdateRequired(
+            true,
+            minAppVersion: '9.9.0',
+          ),
+        ),
       ],
     );
   }
