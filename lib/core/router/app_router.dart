@@ -111,8 +111,8 @@ class AppRouter {
       return onEntry ? null : AppRoutes.loginPath;
     }
 
-    // 4. A non-field role only sees P-20.
-    if (_session.role == FieldRole.unsupported) {
+    // 4. A non-field role, or a 403 on the last request, only sees P-20.
+    if (_session.accessDeniedReason != null) {
       return location == AppRoutes.accessDeniedPath
           ? null
           : AppRoutes.accessDeniedPath;

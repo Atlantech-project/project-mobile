@@ -40,6 +40,12 @@ abstract final class ApiErrorFields {
   static const String minAppVersion = 'min_app_version';
 }
 
+/// Error `code` values the app acts on (CT-01).
+abstract final class ApiErrorCodes {
+  /// 403: the account was deactivated.
+  static const String accountDisabled = 'ACCOUNT_DISABLED';
+}
+
 /// Keys a caller can put in `Options.extra` to steer the interceptors.
 abstract final class ApiExtras {
   /// `true`: send no token and skip the 401 sign-out (system info, ping,

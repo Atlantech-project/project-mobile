@@ -101,7 +101,7 @@ class AppStateView extends StatelessWidget {
   final VoidCallback? onSecondary;
 
   /// Extra content under the message, such as the installed and required
-  /// versions on P-57.
+  /// versions on P-57 or the reason on P-20.
   final Widget? details;
 
   /// Fits a card or a list: a status icon in a circle instead of the brand
@@ -148,7 +148,10 @@ class AppStateView extends StatelessWidget {
       if (onAction != null && primaryLabel != null)
         AppButton.primary(
           label: primaryLabel,
-          icon: kind == AppStateKind.empty ? null : Icons.refresh,
+          // Only the default "Try again" gets the refresh icon.
+          icon: kind == AppStateKind.empty || actionLabel != null
+              ? null
+              : Icons.refresh,
           onPressed: onAction,
           size: compact ? AppButtonSize.web : AppButtonSize.tablet,
         ),

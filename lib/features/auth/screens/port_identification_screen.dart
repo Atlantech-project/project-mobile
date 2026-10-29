@@ -37,6 +37,16 @@ class PortIdentificationScreen extends StatelessWidget {
             minAppVersion: '9.9.0',
           ),
         ),
+        // DEV-ONLY (MB-P53): signs in as Pilot and shows P-20 the way a 403
+        // answer would. "Back to My Tasks" then opens P-54.
+        AppButton.outline(
+          label: l10n.devMockAccessDenied,
+          expand: true,
+          onPressed: () => getIt<SessionState>()
+            ..markPortIdentified()
+            ..signIn(FieldRole.marinePilot)
+            ..denyAccess(),
+        ),
       ],
     );
   }

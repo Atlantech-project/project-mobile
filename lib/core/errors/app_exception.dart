@@ -1,3 +1,5 @@
+import '../network/api_contract.dart';
+
 /// Every failure a Repository can get from the network layer.
 ///
 /// [DioClient] turns each Dio error into one of these, so Repositories and
@@ -37,7 +39,7 @@ final class ForbiddenException extends AppException {
   const ForbiddenException({super.code, super.messageKey, super.detail})
     : super(statusCode: 403);
 
-  bool get isAccountDisabled => code == 'ACCOUNT_DISABLED';
+  bool get isAccountDisabled => code == ApiErrorCodes.accountDisabled;
 }
 
 /// 409: the record changed on the server (stale `version`) or a business
