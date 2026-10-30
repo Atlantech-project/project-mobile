@@ -86,7 +86,12 @@ class AppDialog extends StatelessWidget {
                   spacing: AppSpacing.s3,
                   children: [
                     Text(title, style: AppTextStyles.h3),
-                    Text(body, style: AppTextStyles.bodyM),
+                    Text(
+                      body,
+                      style: AppTextStyles.bodyM.copyWith(
+                        color: AppColors.textSecondary,
+                      ),
+                    ),
                   ],
                 ),
               ),

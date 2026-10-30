@@ -39,7 +39,6 @@ class AppStateView extends StatelessWidget {
     this.onAction,
     this.secondaryLabel,
     this.onSecondary,
-    this.details,
     this.compact = false,
   });
 
@@ -52,7 +51,6 @@ class AppStateView extends StatelessWidget {
     this.onAction,
     this.secondaryLabel,
     this.onSecondary,
-    this.details,
     this.compact = false,
   }) : kind = AppStateKind.empty;
 
@@ -65,7 +63,6 @@ class AppStateView extends StatelessWidget {
     VoidCallback? onRetry,
     this.secondaryLabel,
     this.onSecondary,
-    this.details,
     this.compact = false,
   }) : kind = AppStateKind.error,
        actionLabel = null,
@@ -80,7 +77,6 @@ class AppStateView extends StatelessWidget {
     VoidCallback? onRetry,
     this.secondaryLabel,
     this.onSecondary,
-    this.details,
     this.compact = false,
   }) : kind = AppStateKind.offline,
        actionLabel = null,
@@ -99,10 +95,6 @@ class AppStateView extends StatelessWidget {
 
   final String? secondaryLabel;
   final VoidCallback? onSecondary;
-
-  /// Extra content under the message, such as the installed and required
-  /// versions on P-57 or the reason on P-20.
-  final Widget? details;
 
   /// Fits a card or a list: a status icon in a circle instead of the brand
   /// symbol, and smaller buttons.
@@ -191,10 +183,6 @@ class AppStateView extends StatelessWidget {
                 .copyWith(color: AppColors.textMuted),
             textAlign: TextAlign.center,
           ),
-          if (details != null) ...[
-            SizedBox(height: big ? AppSpacing.s6 : AppSpacing.s5),
-            details!,
-          ],
           if (buttons.isNotEmpty) ...[
             SizedBox(height: big ? AppSpacing.s7 : AppSpacing.s5),
             Wrap(

@@ -144,40 +144,77 @@ class AppLocalizationsEn extends AppLocalizations {
   String get devStateOffline => 'Offline';
 
   @override
-  String get updateRequiredTitle => 'Update the app to continue';
+  String get updateRequiredTitle => 'App Update Required';
 
   @override
   String get updateRequiredMessage =>
-      'This version of ATLANTECH is no longer supported by the port server. Ask your port IT team to install the latest version on this device. Changes saved on this device are kept.';
+      'This version of ATLANTECH is no longer supported. Update the app to continue.';
 
   @override
-  String get updateInstalledVersion => 'Installed version';
+  String get updateInstalledVersion => 'Current installed version';
 
   @override
   String get updateRequiredVersion => 'Required version';
 
   @override
+  String get updateRequiredVersionUnknown => 'Not sent by the server';
+
+  @override
+  String get updateNoticeTitle => 'Install the new version';
+
+  @override
+  String get updateNoticeMessage =>
+      'The update reaches the port as an APK file, or your administrator installs it on this tablet. App access stays blocked until it is installed.';
+
+  @override
+  String get updateGuidance => 'Administrator guidance required';
+
+  @override
+  String get updateBlocked => 'Blocked until the required update is installed.';
+
+  @override
+  String get updateOutboxNote =>
+      'The version check does not send or confirm Outbox items. Changes saved on this device are kept under the user who recorded them.';
+
+  @override
   String get devMockUpdateRequired => 'Simulate update required (426)';
 
   @override
-  String get accessDeniedTitle => 'You do not have access to this';
+  String get accessDeniedTitle => 'Access Denied';
 
   @override
   String get accessDeniedPermissionMessage =>
-      'Your role or terminal scope does not allow this page or action. Changes saved on this device are kept.';
+      'You do not have permission to access the requested page or action.';
 
   @override
-  String get accessDeniedRoleMessage =>
-      'This app is for Marine Pilots, Tug Masters and CT Supervisors. Your account has a different role, so sign in with a field account or use the web dashboard.';
+  String get accessDeniedRoleMessage => 'This app is for field roles only.';
 
   @override
   String get accessDeniedReasonLabel => 'Reason';
 
   @override
-  String get accessDeniedReasonPermission => 'Role or terminal scope';
+  String get accessDeniedReasonPermission =>
+      'Your role or terminal scope does not allow this page or action.';
 
   @override
-  String get accessDeniedReasonRole => 'Not a field role';
+  String get accessDeniedReasonRole =>
+      'Your role works on the web dashboard only.';
+
+  @override
+  String get accessDeniedContact =>
+      'Contact your system administrator if you need access.';
+
+  @override
+  String get accessDeniedRoleContact =>
+      'Use the ATLANTECH web dashboard, or sign in with a Marine Pilot, Tug Master or CT Supervisor account.';
+
+  @override
+  String get accessDeniedBackHint =>
+      'Return to your task list. Changes saved on this device are kept.';
+
+  @override
+  String get accessDeniedSignOutHint =>
+      'Sign out, then sign in with a field account.';
 
   @override
   String get backToMyTasksAction => 'Back to My Tasks';
