@@ -8,18 +8,22 @@ import 'app_status_badge.dart';
 
 /// Figma: State notice (e.g. 245:7031). A tinted banner with a stripe on the
 /// start edge, a heading and a message. Heading sits beside the message on
-/// tablet and above it on phone.
+/// tablet and above it on phone, or always above it with [stacked].
 class AppNotice extends StatelessWidget {
   const AppNotice({
     super.key,
     required this.title,
     this.message,
     this.tone = AppStatusTone.info,
+    this.stacked = false,
   });
 
   final String title;
   final String? message;
   final AppStatusTone tone;
+
+  /// Heading above the message on tablet too (P-57 "Update state feedback").
+  final bool stacked;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +50,7 @@ class AppNotice extends StatelessWidget {
           bottom: side,
         ),
       ),
-      child: context.isTablet && body != null
+      child: context.isTablet && !stacked && body != null
           ? Row(
               spacing: AppSpacing.s7,
               children: [

@@ -143,40 +143,78 @@ class AppLocalizationsAr extends AppLocalizations {
   String get devStateOffline => 'غير متصل';
 
   @override
-  String get updateRequiredTitle => 'حدّث التطبيق للمتابعة';
+  String get updateRequiredTitle => 'يلزم تحديث التطبيق';
 
   @override
   String get updateRequiredMessage =>
-      'لم يعد خادم الميناء يدعم هذا الإصدار من ATLANTECH. اطلب من فريق تقنية المعلومات بالميناء تثبيت أحدث إصدار على هذا الجهاز. التغييرات المحفوظة على الجهاز لن تُفقد.';
+      'لم يعد هذا الإصدار من ATLANTECH مدعومًا. حدّث التطبيق للمتابعة.';
 
   @override
-  String get updateInstalledVersion => 'الإصدار المثبّت';
+  String get updateInstalledVersion => 'الإصدار المثبّت حاليًا';
 
   @override
   String get updateRequiredVersion => 'الإصدار المطلوب';
 
   @override
+  String get updateRequiredVersionUnknown => 'لم يرسله الخادم';
+
+  @override
+  String get updateNoticeTitle => 'ثبّت الإصدار الجديد';
+
+  @override
+  String get updateNoticeMessage =>
+      'يصل التحديث إلى الميناء كملف APK، أو يثبّته المسؤول على هذا الجهاز. يظل الدخول إلى التطبيق محظورًا حتى يتم التثبيت.';
+
+  @override
+  String get updateGuidance => 'يلزم الرجوع إلى المسؤول';
+
+  @override
+  String get updateBlocked => 'محظور حتى يتم تثبيت التحديث المطلوب.';
+
+  @override
+  String get updateOutboxNote =>
+      'التحقق من الإصدار لا يرسل عناصر صندوق الإرسال ولا يؤكدها. التغييرات المحفوظة على الجهاز تبقى باسم المستخدم الذي سجّلها.';
+
+  @override
   String get devMockUpdateRequired => 'محاكاة طلب التحديث (426)';
 
   @override
-  String get accessDeniedTitle => 'ليس لديك صلاحية لهذا';
+  String get accessDeniedTitle => 'تم رفض الوصول';
 
   @override
   String get accessDeniedPermissionMessage =>
-      'دورك أو نطاق المحطة الخاص بك لا يسمح بهذه الصفحة أو هذا الإجراء. التغييرات المحفوظة على الجهاز لن تُفقد.';
+      'ليس لديك صلاحية للوصول إلى الصفحة أو الإجراء المطلوب.';
 
   @override
   String get accessDeniedRoleMessage =>
-      'هذا التطبيق مخصص للمرشدين البحريين وقادة القاطرات ومشرفي محطة الحاويات. حسابك له دور مختلف، لذا سجّل الدخول بحساب ميداني أو استخدم لوحة التحكم على الويب.';
+      'هذا التطبيق مخصص للأدوار الميدانية فقط.';
 
   @override
   String get accessDeniedReasonLabel => 'السبب';
 
   @override
-  String get accessDeniedReasonPermission => 'الدور أو نطاق المحطة';
+  String get accessDeniedReasonPermission =>
+      'دورك أو نطاق المحطة الخاص بك لا يسمح بهذه الصفحة أو هذا الإجراء.';
 
   @override
-  String get accessDeniedReasonRole => 'ليس دورًا ميدانيًا';
+  String get accessDeniedReasonRole =>
+      'دورك يعمل على لوحة التحكم على الويب فقط.';
+
+  @override
+  String get accessDeniedContact =>
+      'تواصل مع مسؤول النظام إذا كنت تحتاج إلى الوصول.';
+
+  @override
+  String get accessDeniedRoleContact =>
+      'استخدم لوحة تحكم ATLANTECH على الويب، أو سجّل الدخول بحساب مرشد بحري أو قائد قاطرة أو مشرف محطة الحاويات.';
+
+  @override
+  String get accessDeniedBackHint =>
+      'العودة إلى قائمة مهامك. التغييرات المحفوظة على الجهاز لن تُفقد.';
+
+  @override
+  String get accessDeniedSignOutHint =>
+      'سجّل الخروج، ثم سجّل الدخول بحساب ميداني.';
 
   @override
   String get backToMyTasksAction => 'العودة إلى مهامي';

@@ -365,19 +365,19 @@ abstract class AppLocalizations {
   /// No description provided for @updateRequiredTitle.
   ///
   /// In en, this message translates to:
-  /// **'Update the app to continue'**
+  /// **'App Update Required'**
   String get updateRequiredTitle;
 
   /// No description provided for @updateRequiredMessage.
   ///
   /// In en, this message translates to:
-  /// **'This version of ATLANTECH is no longer supported by the port server. Ask your port IT team to install the latest version on this device. Changes saved on this device are kept.'**
+  /// **'This version of ATLANTECH is no longer supported. Update the app to continue.'**
   String get updateRequiredMessage;
 
   /// No description provided for @updateInstalledVersion.
   ///
   /// In en, this message translates to:
-  /// **'Installed version'**
+  /// **'Current installed version'**
   String get updateInstalledVersion;
 
   /// No description provided for @updateRequiredVersion.
@@ -385,6 +385,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Required version'**
   String get updateRequiredVersion;
+
+  /// No description provided for @updateRequiredVersionUnknown.
+  ///
+  /// In en, this message translates to:
+  /// **'Not sent by the server'**
+  String get updateRequiredVersionUnknown;
+
+  /// No description provided for @updateNoticeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Install the new version'**
+  String get updateNoticeTitle;
+
+  /// No description provided for @updateNoticeMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'The update reaches the port as an APK file, or your administrator installs it on this tablet. App access stays blocked until it is installed.'**
+  String get updateNoticeMessage;
+
+  /// No description provided for @updateGuidance.
+  ///
+  /// In en, this message translates to:
+  /// **'Administrator guidance required'**
+  String get updateGuidance;
+
+  /// No description provided for @updateBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Blocked until the required update is installed.'**
+  String get updateBlocked;
+
+  /// No description provided for @updateOutboxNote.
+  ///
+  /// In en, this message translates to:
+  /// **'The version check does not send or confirm Outbox items. Changes saved on this device are kept under the user who recorded them.'**
+  String get updateOutboxNote;
 
   /// No description provided for @devMockUpdateRequired.
   ///
@@ -395,19 +431,19 @@ abstract class AppLocalizations {
   /// No description provided for @accessDeniedTitle.
   ///
   /// In en, this message translates to:
-  /// **'You do not have access to this'**
+  /// **'Access Denied'**
   String get accessDeniedTitle;
 
   /// No description provided for @accessDeniedPermissionMessage.
   ///
   /// In en, this message translates to:
-  /// **'Your role or terminal scope does not allow this page or action. Changes saved on this device are kept.'**
+  /// **'You do not have permission to access the requested page or action.'**
   String get accessDeniedPermissionMessage;
 
   /// No description provided for @accessDeniedRoleMessage.
   ///
   /// In en, this message translates to:
-  /// **'This app is for Marine Pilots, Tug Masters and CT Supervisors. Your account has a different role, so sign in with a field account or use the web dashboard.'**
+  /// **'This app is for field roles only.'**
   String get accessDeniedRoleMessage;
 
   /// No description provided for @accessDeniedReasonLabel.
@@ -419,14 +455,38 @@ abstract class AppLocalizations {
   /// No description provided for @accessDeniedReasonPermission.
   ///
   /// In en, this message translates to:
-  /// **'Role or terminal scope'**
+  /// **'Your role or terminal scope does not allow this page or action.'**
   String get accessDeniedReasonPermission;
 
   /// No description provided for @accessDeniedReasonRole.
   ///
   /// In en, this message translates to:
-  /// **'Not a field role'**
+  /// **'Your role works on the web dashboard only.'**
   String get accessDeniedReasonRole;
+
+  /// No description provided for @accessDeniedContact.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact your system administrator if you need access.'**
+  String get accessDeniedContact;
+
+  /// No description provided for @accessDeniedRoleContact.
+  ///
+  /// In en, this message translates to:
+  /// **'Use the ATLANTECH web dashboard, or sign in with a Marine Pilot, Tug Master or CT Supervisor account.'**
+  String get accessDeniedRoleContact;
+
+  /// No description provided for @accessDeniedBackHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Return to your task list. Changes saved on this device are kept.'**
+  String get accessDeniedBackHint;
+
+  /// No description provided for @accessDeniedSignOutHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out, then sign in with a field account.'**
+  String get accessDeniedSignOutHint;
 
   /// No description provided for @backToMyTasksAction.
   ///

@@ -1,94 +1,152 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/di/injection.dart';
 import '../../../core/localization/l10n/app_localizations.dart';
-import '../../../core/localization/locale_cubit.dart';
 import '../../../core/network/client_info.dart';
+import '../../../core/responsive/responsive.dart';
 import '../../../core/router/session_state.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_sizes.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/theme/app_text_styles.dart';
-import '../../../core/widgets/app_card.dart';
-import '../../../core/widgets/app_connection_status.dart';
-import '../../../core/widgets/app_header.dart';
-import '../../../core/widgets/app_icon_button.dart';
 import '../../../core/widgets/app_ltr.dart';
+import '../../../core/widgets/app_notice.dart';
+import '../../../core/widgets/app_panel.dart';
 import '../../../core/widgets/app_scaffold.dart';
-import '../../../core/widgets/app_state_view.dart';
+import '../../../core/widgets/app_status_badge.dart';
 
-/// P-57 App Update Required.
+/// P-57 App Update Required (Figma 245:8406, "Update link unavailable").
 ///
 /// The router shows this page, and only this page, once the server answers
-/// 426 (`APP_UPDATE_REQUIRED`). The app cannot update itself on the closed
-/// port network, so the page tells the user to have the new version
-/// installed. A newly installed APK starts the app again, which clears the
-/// block.
+/// 426 (`APP_UPDATE_REQUIRED`). There is no update link: the new APK reaches
+/// the port as a file or is installed by an administrator, so the page has
+/// no action. A newly installed APK starts the app again, which clears the
+/// block. Like the design, the page has no header.
 class AppUpdateRequiredScreen extends StatelessWidget {
   const AppUpdateRequiredScreen({super.key});
+
+  static const String _lockup = 'assets/images/brand/lockup_color.png';
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
+    final isTablet = context.isTablet;
     final installed = getIt<ClientInfo>().appVersion;
     final required = getIt<SessionState>().minAppVersion;
 
     return AppScaffold(
-      header: AppHeader(
-        title: l10n.titleAppUpdateRequired,
-        actions: [
-          const AppConnectionStatus(),
-          AppIconButton(
-            icon: Icons.translate,
-            tooltip: l10n.switchLanguage,
-            onPressed: () => context.read<LocaleCubit>().toggle(),
+      body: AppPanel(
+        maxWidth: AppSizes.panelWide,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Align(
+            alignment: AlignmentDirectional.centerStart,
+            child: Image.asset(
+              _lockup,
+              width: AppSizes.logoLockupWidth,
+              fit: BoxFit.contain,
+              semanticLabel: 'ATLANTECH',
+              filterQuality: FilterQuality.medium,
+            ),
+          ),
+          Text(
+            l10n.updateRequiredTitle,
+            style: isTablet ? AppTextStyles.tabletH1 : AppTextStyles.h1,
+            textAlign: TextAlign.center,
+          ),
+          Text(
+            l10n.updateRequiredMessage,
+            style: isTablet ? AppTextStyles.tabletBody : AppTextStyles.bodyL,
+            textAlign: TextAlign.center,
+          ),
+          _VersionInfo(
+            installed: installed,
+            required: required ?? l10n.updateRequiredVersionUnknown,
+          ),
+          AppNotice(
+            title: l10n.updateNoticeTitle,
+            message: l10n.updateNoticeMessage,
+            tone: AppStatusTone.neutral,
+            stacked: true,
+          ),
+          Text(
+            l10n.updateGuidance,
+            style: AppTextStyles.h3,
+            textAlign: TextAlign.center,
+          ),
+          Text(
+            l10n.updateBlocked,
+            style: AppTextStyles.h4,
+            textAlign: TextAlign.center,
+          ),
+          Text(
+            l10n.updateOutboxNote,
+            style: AppTextStyles.bodyM.copyWith(color: AppColors.textMuted),
+            textAlign: TextAlign.center,
           ),
         ],
-      ),
-      body: AppStateView.error(
-        icon: Icons.system_update_outlined,
-        title: l10n.updateRequiredTitle,
-        message: l10n.updateRequiredMessage,
-        details: AppCard(
-          tone: AppCardTone.subtle,
-          child: Column(
-            spacing: AppSpacing.s3,
-            children: [
-              _VersionRow(
-                label: l10n.updateInstalledVersion,
-                version: installed,
-              ),
-              if (required != null)
-                _VersionRow(
-                  label: l10n.updateRequiredVersion,
-                  version: required,
-                ),
-            ],
-          ),
-        ),
       ),
     );
   }
 }
 
-/// One "label · version" line. The version stays LTR inside Arabic.
-class _VersionRow extends StatelessWidget {
-  const _VersionRow({required this.label, required this.version});
+/// Figma "Version information": installed and required side by side between
+/// two rules, stacked on phone. Versions stay LTR inside Arabic.
+class _VersionInfo extends StatelessWidget {
+  const _VersionInfo({required this.installed, required this.required});
 
-  final String label;
-  final String version;
+  final String installed;
+  final String required;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    final l10n = AppLocalizations.of(context);
+    final fields = [
+      _VersionField(label: l10n.updateInstalledVersion, value: installed),
+      _VersionField(label: l10n.updateRequiredVersion, value: required),
+    ];
+    const rule = BorderSide(
+      color: AppColors.borderDefault,
+      width: AppSizes.borderThin,
+    );
+
+    return Container(
+      padding: const EdgeInsetsDirectional.symmetric(vertical: AppSpacing.s5),
+      decoration: const BoxDecoration(
+        border: Border(top: rule, bottom: rule),
+      ),
+      child: context.isTablet
+          ? Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: AppSpacing.s7,
+              children: [for (final f in fields) Expanded(child: f)],
+            )
+          : Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              spacing: AppSpacing.s5,
+              children: fields,
+            ),
+    );
+  }
+}
+
+class _VersionField extends StatelessWidget {
+  const _VersionField({required this.label, required this.value});
+
+  final String label;
+  final String value;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: AppSizes.gapTight,
       children: [
-        Expanded(
-          child: Text(
-            label,
-            style: AppTextStyles.labelL.copyWith(color: AppColors.textMuted),
-          ),
+        Text(
+          label,
+          style: AppTextStyles.bodyL.copyWith(color: AppColors.textMuted),
         ),
-        Text(ltrIsolate(version), style: AppTextStyles.h4),
+        Text(ltrIsolate(value), style: AppTextStyles.h3),
       ],
     );
   }

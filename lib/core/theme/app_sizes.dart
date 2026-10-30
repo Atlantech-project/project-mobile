@@ -16,7 +16,6 @@ abstract final class AppSizes {
 
   // Layout (tablet frame 1280 × 800).
   static const double headerHeight = 88;
-  static const double footerHeight = 40;
 
   // Component metrics read from the Figma Components page (260:2) that have
   // no variable of their own. Kept here so widgets never hardcode them.
@@ -65,4 +64,15 @@ abstract final class AppSizes {
   static const double stateBadge = 40;
   static const double stateBadgeIcon = 22;
   static const double stateTextMax = 480;
+
+  /// Blocking pages (P-57, P-20): a centered panel. P-57 "Mandatory update
+  /// panel" is 760 wide, P-20 "Access explanation" 600.
+  static const double panelWide = 760;
+  static const double panelNarrow = 600;
+
+  /// P-20 "Neutral error placeholder": the small "!" tile.
+  static const double panelMarkTile = 36;
+
+  /// P-57 logo lockup width (Figma Logo/Lockup · color).
+  static const double logoLockupWidth = 150;
 }
