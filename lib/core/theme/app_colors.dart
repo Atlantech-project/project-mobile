@@ -3,11 +3,16 @@ import 'package:flutter/painting.dart';
 import 'app_palette.dart';
 
 /// Semantic color tokens (Light). The only colors widgets may use.
+///
+/// Values follow the Figma variables. A few semantic tokens in Figma are set
+/// to their own value instead of a primitive (bg/page, bg/subtle,
+/// text/primary, text/secondary, text/accent, border/default,
+/// border/strong); those are written as hex here.
 abstract final class AppColors {
   // bg
-  static const Color bgPage = AppPalette.neutral50;
+  static const Color bgPage = Color(0xFFF7F5F2);
   static const Color bgSurface = AppPalette.white;
-  static const Color bgSubtle = AppPalette.neutral100;
+  static const Color bgSubtle = Color(0xFFF2EFEB);
   static const Color bgMuted = AppPalette.neutral200;
   static const Color bgInverse = AppPalette.navy800;
   static const Color bgBrandTint = AppPalette.teal100;
@@ -17,17 +22,17 @@ abstract final class AppColors {
   static final Color overlayScrim = AppPalette.navy950.withValues(alpha: 0.33);
 
   // text
-  static const Color textPrimary = AppPalette.navy900;
-  static const Color textSecondary = AppPalette.neutral700;
+  static const Color textPrimary = Color(0xFF0F2A36);
+  static const Color textSecondary = Color(0xFF4B5F68);
   static const Color textMuted = AppPalette.neutral600;
   static const Color textDisabled = AppPalette.neutral400;
-  static const Color textInverse = AppPalette.white;
+  static const Color textInverse = AppPalette.neutral200;
   static const Color textLink = AppPalette.teal700;
-  static const Color textAccent = AppPalette.gold700;
+  static const Color textAccent = Color(0xFF7A6440);
 
   // border
-  static const Color borderDefault = AppPalette.neutral200;
-  static const Color borderStrong = AppPalette.neutral300;
+  static const Color borderDefault = Color(0xFFD3DEDF);
+  static const Color borderStrong = Color(0xFF8FA3AA);
   static const Color borderFocus = AppPalette.teal500;
   static const Color borderInverse = AppPalette.navy700;
 

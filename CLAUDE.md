@@ -12,7 +12,7 @@ Read this file fully before any task. Detailed docs live in `docs/`:
 - applicationId / namespace: `io.atlantech.mobile` · Dart package name: `atlantech`
 - Flutter 3.47.8 · Dart 3.13.x
 - 9 screens only: P-53, P-52, P-54, P-55, P-56, P-19, P-20, P-57, P-58. Content changes by role, not the screen.
-- **App shell follows the Figma design: top header (88) + footer (40), no bottom navigation bar.** Navigation between pages goes through the header.
+- **App shell follows the Figma design: top header (88), no footer, no bottom navigation bar.** Navigation between pages goes through the header. (The 40 px strip under the Figma frames is a wireframe annotation.) Blocking pages like P-57 have no header.
 
 ## 2. Stack (do not substitute)
 

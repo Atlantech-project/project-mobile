@@ -22,24 +22,26 @@ white #FFFFFF · black #000000
 
 ## 2. Semantic colors (Light)
 
+Checked against the Figma variables on 2026-10-30. "Own value" means the Figma variable is set to a hex value, not to a primitive.
+
 | Token | → Primitive | Use |
 |---|---|---|
-| bg/page | neutral/50 | App page |
+| bg/page | #F7F5F2 (own value) | App page |
 | bg/surface | white | Cards, tables, dialogs |
-| bg/subtle | neutral/100 | Table header, hover row |
+| bg/subtle | #F2EFEB (own value) | Table header, hover row |
 | bg/muted | neutral/200 | Selected or disabled fill |
 | bg/inverse | navy/800 | Sidebar, cover |
 | bg/brand-tint | teal/100 | Info tint, selected row |
 | bg/overlay | navy/950 | Dialog scrim at 33% opacity |
-| text/primary | navy/900 | Titles, values |
-| text/secondary | neutral/700 | Body text |
+| text/primary | #0F2A36 (own value) | Titles, values |
+| text/secondary | #4B5F68 (own value) | Body text |
 | text/muted | neutral/600 | Hints, captions |
 | text/disabled | neutral/400 | Disabled |
-| text/inverse | white | On navy and teal |
+| text/inverse | neutral/200 | On navy and teal |
 | text/link | teal/700 | Links |
-| text/accent | gold/700 | Gold highlight text |
-| border/default | neutral/200 | Dividers, cards |
-| border/strong | neutral/300 | Inputs, table outline |
+| text/accent | #7A6440 (own value) | Gold highlight text |
+| border/default | #D3DEDF (own value) | Dividers, cards |
+| border/strong | #8FA3AA (own value) | Inputs, table outline |
 | border/focus | teal/500 | Focus ring |
 | border/inverse | navy/700 | On dark surfaces |
 | brand/primary | navy/800 | Primary button |
@@ -114,7 +116,7 @@ Dialogs: Elevation/3 over a 33% navy/950 scrim.
 
 ## 6. Layout
 
-- Tablet frame 1280 × 800: 8 columns, 16 gutter, 24 margin. Header 88, footer 40, body 672.
+- Tablet frame 1280 × 800: 8 columns, 16 gutter, 24 margin. Header 88, body 712. The 40 px strip at the bottom of the UI Design frames is a wireframe annotation, not app UI.
 - 4 px grid. Line heights are multiples of 2, spacing multiples of 4.
 
 ## 7. App-only tokens (MB-S01, not in Figma)
