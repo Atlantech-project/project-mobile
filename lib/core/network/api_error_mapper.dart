@@ -50,6 +50,11 @@ abstract final class ApiErrorMapper {
         messageKey: messageKey,
         detail: detail,
       ),
+      404 => NotFoundException(
+        code: code,
+        messageKey: messageKey,
+        detail: detail,
+      ),
       409 => ConflictException(
         code: code,
         messageKey: messageKey,
@@ -78,10 +83,17 @@ abstract final class ApiErrorMapper {
         detail: detail,
         minAppVersion: _string(map[ApiErrorFields.minAppVersion]),
       ),
+      429 => TooManyAttemptsException(
+        code: code,
+        messageKey: messageKey,
+        detail: detail,
+        retryAfter: _retryAfter(response),
+      ),
       503 => ServiceUnavailableException(
         code: code,
         messageKey: messageKey,
         detail: detail,
+        retryAfter: _retryAfter(response),
       ),
       final status => ServerException(
         code: code,
@@ -90,6 +102,13 @@ abstract final class ApiErrorMapper {
         statusCode: status,
       ),
     };
+  }
+
+  /// `Retry-After` in seconds. The HTTP-date form is not used by the API.
+  static Duration? _retryAfter(Response<dynamic>? response) {
+    final value = response?.headers.value(ApiHeaders.retryAfter);
+    final seconds = value == null ? null : int.tryParse(value.trim());
+    return seconds == null || seconds < 0 ? null : Duration(seconds: seconds);
   }
 
   static String? _string(Object? value) =>

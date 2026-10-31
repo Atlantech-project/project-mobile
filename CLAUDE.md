@@ -1,8 +1,16 @@
 # ATLANTECH Mobile (Flutter) — Project Rules for Claude Code
 
 Read this file fully before any task. Detailed docs live in `docs/`:
-- `docs/Flutter_Architecture.md` — the architecture blueprint (source of truth for behavior)
+- `docs/task-notes.md` — changes to each MB task after the contracts review, plus global API rules. Read it before every task.
 - `docs/design_tokens.md` — every design token value extracted from Figma
+
+## 0. Where a task comes from (read first)
+
+- **The task** is the MB-xx item in the ATLANTECH Progress Tracker (the roadmap): its title, description and "Done when".
+- **`docs/task-notes.md`** changes that text. Read its "Global rules", then the section with the task ID. A note adds to the roadmap text or replaces the part it names. No section means the roadmap text is current.
+- **Priority when sources disagree:** the API contract (CT-xx) first, then `docs/task-notes.md`, then the tracker text, then this file. If a note and a contract disagree, stop and ask Farouk.
+- This file holds the project's coding rules (stack, folders, design system, RTL, style). It does not define what a task must do. If this file and the tracker or the notes disagree about a task, follow the tracker and the notes and report the difference.
+- The architecture blueprint (`ATLANTECH_Flutter_Architecture.md`) is background reading. It is not in this repo, and the contracts and the notes win over it.
 
 ## 1. Project facts
 
@@ -42,10 +50,10 @@ lib/
 │   ├── theme/         tokens + ThemeData (see section 5)
 │   ├── localization/  l10n/*.arb + generated files, locale_cubit.dart
 │   ├── responsive/    responsive.dart
-│   ├── errors/        custom exceptions (MB-F2)
+│   ├── errors/        custom exceptions + AppErrorMessage (MB-F2)
 │   ├── network/       dio_client.dart, interceptors/ (MB-F2)
 │   ├── storage/       Hive boxes + encryption key (MB-F3)
-│   ├── sync/          Outbox engine (MB-F4)
+│   ├── sync/          Outbox engine (MB-F4A core, MB-F4B server)
 │   ├── models/
 │   └── widgets/       shared design-system widgets (App* prefix)
 ├── features/
@@ -54,7 +62,7 @@ lib/
 │   ├── sync/           P-56
 │   ├── notifications/  P-19
 │   ├── settings/       P-58
-│   └── system/         P-57, P-20, license banners
+│   └── system/         P-57, P-20 (license banners deferred, DEC-54)
 │       each feature: cubit/  screens/  widgets/  data/
 └── main.dart
 ```
@@ -63,7 +71,8 @@ lib/
 
 - Flow: `UI → Cubit → Repository → (DioClient + Hive)`.
 - A Cubit never touches Dio or Hive directly. Only Repositories do.
-- Reads are cache-first. Writes go to the Outbox first (from MB-F4 onward).
+- Reads are cache-first. Writes go to the Outbox first (from MB-F4A onward).
+- API rules (paths, headers, `Idempotency-Key`, error bodies, datetimes, `version`) are in the "Global rules" of `docs/task-notes.md` and the contracts. Do not restate them here.
 - Register shared objects in `setupInjection()`; never construct singletons inside widgets.
 - No business logic inside widgets.
 - Testing is out of scope for this team (QA owns it). Do not generate test files unless asked.
@@ -126,7 +135,7 @@ lib/
 
 ## 8. Workflow
 
-- Every task has an ID from the tracker (e.g. `MB-F1`). Work on branch `feature/<TASK-ID>-<short-name>` from `develop`.
+- Every task has an ID from the tracker (e.g. `MB-F1`). Before coding, read `docs/task-notes.md` for that ID (section 0). Work on branch `feature/<TASK-ID>-<short-name>` from `develop`.
 - Commit messages: `<TASK-ID>: <what changed>`.
 - Do only what the current task asks. If something needed is missing or a doc conflicts, stop and report it instead of guessing.
-- At the end of a task, report: files created/changed, packages added, anything left open.
+- At the end of a task, report: the task as it stands after the notes, files created/changed, packages added, which notes were applied, anything left open.

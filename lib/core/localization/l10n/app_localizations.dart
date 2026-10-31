@@ -505,6 +505,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Simulate access denied (403)'**
   String get devMockAccessDenied;
+
+  /// No description provided for @errorBadRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'The request could not be processed.'**
+  String get errorBadRequest;
+
+  /// No description provided for @errorUnauthenticated.
+  ///
+  /// In en, this message translates to:
+  /// **'Your session has ended. Sign in again.'**
+  String get errorUnauthenticated;
+
+  /// No description provided for @errorInvalidCredentials.
+  ///
+  /// In en, this message translates to:
+  /// **'The username or password is incorrect.'**
+  String get errorInvalidCredentials;
+
+  /// No description provided for @errorForbidden.
+  ///
+  /// In en, this message translates to:
+  /// **'Your role or terminal scope does not allow this.'**
+  String get errorForbidden;
+
+  /// No description provided for @errorAccountDisabled.
+  ///
+  /// In en, this message translates to:
+  /// **'This account is disabled. Contact your system administrator.'**
+  String get errorAccountDisabled;
+
+  /// No description provided for @errorPasswordChangeRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Change your password to continue.'**
+  String get errorPasswordChangeRequired;
+
+  /// No description provided for @errorNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'This record no longer exists.'**
+  String get errorNotFound;
+
+  /// No description provided for @errorVersionConflict.
+  ///
+  /// In en, this message translates to:
+  /// **'This record was changed by someone else. The latest version is shown.'**
+  String get errorVersionConflict;
+
+  /// No description provided for @errorValidationFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Some of the data is not valid. Check the fields and try again.'**
+  String get errorValidationFailed;
+
+  /// No description provided for @errorIdempotencyKeyReused.
+  ///
+  /// In en, this message translates to:
+  /// **'This request was already sent with different data.'**
+  String get errorIdempotencyKeyReused;
+
+  /// No description provided for @errorLicenseReadOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'The port licence is read-only. New changes cannot be saved.'**
+  String get errorLicenseReadOnly;
+
+  /// No description provided for @errorAppUpdateRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'This version of the app is no longer supported. Update the app to continue.'**
+  String get errorAppUpdateRequired;
+
+  /// No description provided for @errorTooManyAttempts.
+  ///
+  /// In en, this message translates to:
+  /// **'Too many attempts. Wait a moment, then try again.'**
+  String get errorTooManyAttempts;
+
+  /// No description provided for @errorServerError.
+  ///
+  /// In en, this message translates to:
+  /// **'The server had a problem. Try again in a moment.'**
+  String get errorServerError;
+
+  /// No description provided for @errorServiceUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'The server is not available right now. Try again in a moment.'**
+  String get errorServiceUnavailable;
+
+  /// No description provided for @errorNetwork.
+  ///
+  /// In en, this message translates to:
+  /// **'The port server cannot be reached. Check the port network and try again.'**
+  String get errorNetwork;
+
+  /// No description provided for @errorTimeout.
+  ///
+  /// In en, this message translates to:
+  /// **'The port server took too long to answer. Try again.'**
+  String get errorTimeout;
+
+  /// No description provided for @errorUntrustedServer.
+  ///
+  /// In en, this message translates to:
+  /// **'This network is not the port network. Connect to the port network and try again.'**
+  String get errorUntrustedServer;
+
+  /// No description provided for @errorUnknown.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong. Try again in a moment.'**
+  String get errorUnknown;
 }
 
 class _AppLocalizationsDelegate

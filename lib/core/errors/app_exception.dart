@@ -6,7 +6,9 @@ import '../network/api_contract.dart';
 /// Cubits never see Dio types. Server errors follow CT-01 (RFC 9457):
 /// [code] is the stable machine code (`ACCOUNT_DISABLED`, `VERSION_CONFLICT`,
 /// …), [messageKey] the translation key the app shows (`errors.account_disabled`)
-/// and [detail] the server's own English text, for logs only.
+/// and [detail] the server's own English text, shown only when the app has
+/// no translation for [messageKey]. Branch on [code], never on [detail].
+/// Show the text with `AppErrorMessage.of`.
 sealed class AppException implements Exception {
   const AppException({
     this.code,
@@ -40,6 +42,16 @@ final class ForbiddenException extends AppException {
     : super(statusCode: 403);
 
   bool get isAccountDisabled => code == ApiErrorCodes.accountDisabled;
+
+  /// The user must change the password first. Can come back on any call.
+  bool get isPasswordChangeRequired =>
+      code == ApiErrorCodes.passwordChangeRequired;
+}
+
+/// 404 (`NOT_FOUND`): the record or address does not exist.
+final class NotFoundException extends AppException {
+  const NotFoundException({super.code, super.messageKey, super.detail})
+    : super(statusCode: 404);
 }
 
 /// 409: the record changed on the server (stale `version`) or a business
@@ -68,7 +80,8 @@ final class ValidationException extends AppException {
   final Map<String, List<String>> fieldErrors;
 }
 
-/// 423: the port licence is read-only, so new writes are refused.
+/// 423 (`LICENSE_READ_ONLY`): the port licence is read-only, so new writes
+/// are refused. Reserved: the server does not return it yet (DEC-54).
 final class LicenseReadOnlyException extends AppException {
   const LicenseReadOnlyException({super.code, super.messageKey, super.detail})
     : super(statusCode: 423);
@@ -87,13 +100,31 @@ final class UpgradeRequiredException extends AppException {
   final String? minAppVersion;
 }
 
-/// 503: the port server is up but not serving right now.
+/// 429 (`TOO_MANY_ATTEMPTS`): sign-in or password change was throttled.
+/// [retryAfter] comes from the `Retry-After` header; ask the user to wait
+/// that long.
+final class TooManyAttemptsException extends AppException {
+  const TooManyAttemptsException({
+    super.code,
+    super.messageKey,
+    super.detail,
+    this.retryAfter,
+  }) : super(statusCode: 429);
+
+  final Duration? retryAfter;
+}
+
+/// 503: the port server is up but not serving right now. [retryAfter] comes
+/// from `Retry-After` when the server sends it.
 final class ServiceUnavailableException extends AppException {
   const ServiceUnavailableException({
     super.code,
     super.messageKey,
     super.detail,
+    this.retryAfter,
   }) : super(statusCode: 503);
+
+  final Duration? retryAfter;
 }
 
 /// Any other HTTP error status.

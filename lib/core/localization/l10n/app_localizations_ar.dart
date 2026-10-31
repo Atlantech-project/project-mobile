@@ -224,4 +224,73 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get devMockAccessDenied => 'محاكاة رفض الوصول (403)';
+
+  @override
+  String get errorBadRequest => 'تعذّر تنفيذ الطلب.';
+
+  @override
+  String get errorUnauthenticated => 'انتهت الجلسة. سجّل الدخول مرة أخرى.';
+
+  @override
+  String get errorInvalidCredentials =>
+      'اسم المستخدم أو كلمة المرور غير صحيحة.';
+
+  @override
+  String get errorForbidden =>
+      'دورك أو نطاق المحطة الخاص بك لا يسمح بهذا الإجراء.';
+
+  @override
+  String get errorAccountDisabled => 'هذا الحساب معطّل. تواصل مع مسؤول النظام.';
+
+  @override
+  String get errorPasswordChangeRequired => 'غيّر كلمة المرور للمتابعة.';
+
+  @override
+  String get errorNotFound => 'هذا السجل لم يعد موجوداً.';
+
+  @override
+  String get errorVersionConflict =>
+      'تم تعديل هذا السجل من مستخدم آخر. يتم عرض أحدث نسخة.';
+
+  @override
+  String get errorValidationFailed =>
+      'بعض البيانات غير صحيحة. راجع الحقول وحاول مرة أخرى.';
+
+  @override
+  String get errorIdempotencyKeyReused =>
+      'تم إرسال هذا الطلب من قبل ببيانات مختلفة.';
+
+  @override
+  String get errorLicenseReadOnly =>
+      'ترخيص الميناء للقراءة فقط. لا يمكن حفظ تغييرات جديدة.';
+
+  @override
+  String get errorAppUpdateRequired =>
+      'هذا الإصدار من التطبيق لم يعد مدعوماً. حدّث التطبيق للمتابعة.';
+
+  @override
+  String get errorTooManyAttempts =>
+      'محاولات كثيرة. انتظر قليلاً ثم حاول مرة أخرى.';
+
+  @override
+  String get errorServerError =>
+      'حدثت مشكلة في الخادم. حاول مرة أخرى بعد قليل.';
+
+  @override
+  String get errorServiceUnavailable =>
+      'الخادم غير متاح الآن. حاول مرة أخرى بعد قليل.';
+
+  @override
+  String get errorNetwork =>
+      'لا يمكن الوصول إلى خادم الميناء. تحقق من شبكة الميناء وحاول مرة أخرى.';
+
+  @override
+  String get errorTimeout => 'تأخر خادم الميناء في الرد. حاول مرة أخرى.';
+
+  @override
+  String get errorUntrustedServer =>
+      'هذه الشبكة ليست شبكة الميناء. اتصل بشبكة الميناء وحاول مرة أخرى.';
+
+  @override
+  String get errorUnknown => 'حدث خطأ ما. حاول مرة أخرى بعد قليل.';
 }

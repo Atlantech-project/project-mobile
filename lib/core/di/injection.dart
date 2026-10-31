@@ -39,7 +39,8 @@ Future<void> setupInjection() async {
       ),
     )
     ..registerLazySingleton<ConnectionCubit>(
-      () => ConnectionCubit(ping: getIt<DioClient>().ping),
+      () =>
+          ConnectionCubit(checkConnection: getIt<DioClient>().checkConnection),
     )
     ..registerLazySingleton<AppRouter>(() => AppRouter(getIt<SessionState>()));
 }
