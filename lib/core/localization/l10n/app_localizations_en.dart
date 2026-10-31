@@ -224,4 +224,75 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get devMockAccessDenied => 'Simulate access denied (403)';
+
+  @override
+  String get errorBadRequest => 'The request could not be processed.';
+
+  @override
+  String get errorUnauthenticated => 'Your session has ended. Sign in again.';
+
+  @override
+  String get errorInvalidCredentials =>
+      'The username or password is incorrect.';
+
+  @override
+  String get errorForbidden =>
+      'Your role or terminal scope does not allow this.';
+
+  @override
+  String get errorAccountDisabled =>
+      'This account is disabled. Contact your system administrator.';
+
+  @override
+  String get errorPasswordChangeRequired => 'Change your password to continue.';
+
+  @override
+  String get errorNotFound => 'This record no longer exists.';
+
+  @override
+  String get errorVersionConflict =>
+      'This record was changed by someone else. The latest version is shown.';
+
+  @override
+  String get errorValidationFailed =>
+      'Some of the data is not valid. Check the fields and try again.';
+
+  @override
+  String get errorIdempotencyKeyReused =>
+      'This request was already sent with different data.';
+
+  @override
+  String get errorLicenseReadOnly =>
+      'The port licence is read-only. New changes cannot be saved.';
+
+  @override
+  String get errorAppUpdateRequired =>
+      'This version of the app is no longer supported. Update the app to continue.';
+
+  @override
+  String get errorTooManyAttempts =>
+      'Too many attempts. Wait a moment, then try again.';
+
+  @override
+  String get errorServerError =>
+      'The server had a problem. Try again in a moment.';
+
+  @override
+  String get errorServiceUnavailable =>
+      'The server is not available right now. Try again in a moment.';
+
+  @override
+  String get errorNetwork =>
+      'The port server cannot be reached. Check the port network and try again.';
+
+  @override
+  String get errorTimeout =>
+      'The port server took too long to answer. Try again.';
+
+  @override
+  String get errorUntrustedServer =>
+      'This network is not the port network. Connect to the port network and try again.';
+
+  @override
+  String get errorUnknown => 'Something went wrong. Try again in a moment.';
 }

@@ -7,9 +7,12 @@ import '../api_contract.dart';
 /// Gives every write (POST, PUT, PATCH, DELETE) an idempotency key so the
 /// server applies it once, however often it is resent.
 ///
+/// Skips [ApiPaths.withoutIdempotencyKey] (`/sync/events`,
+/// `/auth/mobile/login`, `/broadcasting/auth`, CT-01 section 4).
+///
 /// The key comes from `extra[ApiExtras.idempotencyKey]` when the caller has
-/// one (the Outbox stores its own), otherwise a new UUID v4. The key is
-/// written back to `extra` so a retry of the same request reuses it.
+/// one, otherwise a new UUID v4. The key is written back to `extra` so a
+/// retry of the same request reuses it.
 class IdempotencyInterceptor extends Interceptor {
   IdempotencyInterceptor({Random? random})
     : _random = random ?? Random.secure();
@@ -20,13 +23,19 @@ class IdempotencyInterceptor extends Interceptor {
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    if (_writeMethods.contains(options.method.toUpperCase())) {
+    if (_writeMethods.contains(options.method.toUpperCase()) &&
+        !_isExcluded(options)) {
       final key =
           options.extra[ApiExtras.idempotencyKey] as String? ?? _uuidV4();
       options.extra[ApiExtras.idempotencyKey] = key;
       options.headers[ApiHeaders.idempotencyKey] = key;
     }
     handler.next(options);
+  }
+
+  bool _isExcluded(RequestOptions options) {
+    final path = options.uri.path;
+    return ApiPaths.withoutIdempotencyKey.any(path.endsWith);
   }
 
   String _uuidV4() {

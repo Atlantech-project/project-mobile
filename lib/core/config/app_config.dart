@@ -10,15 +10,17 @@ abstract final class AppConfig {
     defaultValue: 'https://app.atlantech.io/api/v1',
   );
 
-  /// Sent as `platform` at sign-in (CT-04). The app is Android only.
-  static const String platform = 'android';
+  /// Sent as `platform` at sign-in (CT-04: `ANDROID` or `IOS`). The app is
+  /// Android only.
+  static const String platform = 'ANDROID';
 
   static const Duration connectTimeout = Duration(seconds: 10);
   static const Duration sendTimeout = Duration(seconds: 30);
   static const Duration receiveTimeout = Duration(seconds: 30);
 
-  /// The health check must answer fast or the server counts as unreachable.
-  static const Duration pingTimeout = Duration(seconds: 5);
+  /// The connection check (`GET /system/info`) must answer fast or the
+  /// server counts as unreachable.
+  static const Duration connectionCheckTimeout = Duration(seconds: 5);
 
   /// How often [ConnectionCubit] re-checks the server while the device has a
   /// network.

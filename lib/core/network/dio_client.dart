@@ -7,13 +7,15 @@ import 'package:flutter/foundation.dart';
 import '../config/app_config.dart';
 import '../errors/app_exception.dart';
 import 'api_contract.dart';
+import 'api_date_time.dart';
 import 'api_error_mapper.dart';
 
 /// The app's only HTTP client. Repositories call it; Cubits never do.
 ///
 /// Every failure is thrown as an [AppException], never a Dio type. Pass
 /// `authenticated: false` for calls made before sign-in, and `idempotencyKey`
-/// when the caller already owns one (the Outbox).
+/// when the caller retries a write it already sent. Datetimes in a body go
+/// through [ApiDateTime.format].
 class DioClient {
   DioClient({
     required SecurityContext securityContext,
@@ -124,15 +126,16 @@ class DioClient {
     ),
   );
 
-  /// `true` when the port server answers the health check in time. Never
-  /// throws.
-  Future<bool> ping() async {
+  /// `true` when the port server answers `GET /system/info` in time. This
+  /// is the connection check: there is no `/system/ping` (CT-04, DEC-58).
+  /// No token, and the server never answers it with 426. Never throws.
+  Future<bool> checkConnection() async {
     try {
       final response = await _dio.get<dynamic>(
-        ApiPaths.ping,
+        ApiPaths.systemInfo,
         options: _options(authenticated: false).copyWith(
-          sendTimeout: AppConfig.pingTimeout,
-          receiveTimeout: AppConfig.pingTimeout,
+          sendTimeout: AppConfig.connectionCheckTimeout,
+          receiveTimeout: AppConfig.connectionCheckTimeout,
         ),
       );
       final status = response.statusCode ?? 0;

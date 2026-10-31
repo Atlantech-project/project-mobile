@@ -7,7 +7,7 @@ import '../config/app_config.dart';
 
 /// Whether the port server is reachable. `true` means online: the device has
 /// a network (Wi-Fi, mobile data or Ethernet) **and** the server answers the
-/// health check. A Wi-Fi without the port VPN therefore shows as offline.
+/// connection check (`GET /system/info`, DEC-58). A Wi-Fi without the port VPN therefore shows as offline.
 /// Drives the header connection status and, later, the Outbox (MB-F4).
 ///
 /// Starts as online so the header does not flash "Offline" while the first
@@ -15,10 +15,10 @@ import '../config/app_config.dart';
 /// [AppConfig.healthCheckInterval].
 class ConnectionCubit extends Cubit<bool> {
   ConnectionCubit({
-    required Future<bool> Function() ping,
+    required Future<bool> Function() checkConnection,
     Connectivity? connectivity,
     Duration interval = AppConfig.healthCheckInterval,
-  }) : _ping = ping,
+  }) : _checkConnection = checkConnection,
        _connectivity = connectivity ?? Connectivity(),
        _interval = interval,
        super(true) {
@@ -35,7 +35,7 @@ class ConnectionCubit extends Cubit<bool> {
     );
   }
 
-  final Future<bool> Function() _ping;
+  final Future<bool> Function() _checkConnection;
   final Connectivity _connectivity;
   final Duration _interval;
   late final StreamSubscription<List<ConnectivityResult>> _subscription;
@@ -45,14 +45,14 @@ class ConnectionCubit extends Cubit<bool> {
 
   bool get isOnline => state;
 
-  /// Pings the server now. The sync engine calls it before sending.
+  /// Checks the server now. The sync engine calls it before sending.
   Future<bool> recheck() {
     if (!_hasNetwork) return Future.value(false);
-    return _inFlight ??= _runPing().whenComplete(() => _inFlight = null);
+    return _inFlight ??= _runCheck().whenComplete(() => _inFlight = null);
   }
 
-  Future<bool> _runPing() async {
-    final reachable = await _ping();
+  Future<bool> _runCheck() async {
+    final reachable = await _checkConnection();
     if (!isClosed && _hasNetwork) emit(reachable);
     return reachable;
   }
