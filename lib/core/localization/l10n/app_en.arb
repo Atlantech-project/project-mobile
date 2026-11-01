@@ -89,5 +89,797 @@
   "errorNetwork": "The port server cannot be reached. Check the port network and try again.",
   "errorTimeout": "The port server took too long to answer. Try again.",
   "errorUntrustedServer": "This network is not the port network. Connect to the port network and try again.",
-  "errorUnknown": "Something went wrong. Try again in a moment."
+  "errorUnknown": "Something went wrong. Try again in a moment.",
+  "connectionUnknown": "Unknown",
+  "portHeaderSubtitle": "Field Operations · Port Identification",
+  "portLoading": "Contacting the port server",
+  "portTitle": "Confirm Your Port",
+  "portIntro": "Port identity is retrieved from the server, not selected on this device.",
+  "portLoadedTitle": "Port identity received",
+  "portLoadedMessage": "Review the server-provided port name and identifier. Continue only if this is the port you expect to work in.",
+  "portUnavailableTitle": "Unable to connect to the server",
+  "portUnavailableMessage": "Port identity and license status could not be retrieved. Restore the server connection and retry. Continue is unavailable.",
+  "portFailedTitle": "Port identity could not be verified",
+  "portFailedMessage": "The server connection is online, but a valid port identity was not available. Retry verification; do not continue with an unverified port.",
+  "portIncorrectTitle": "This connected port appears incorrect",
+  "portIncorrectMessage": "Do not continue. Port identity cannot be edited here. Check the port network, then check again.",
+  "portConnectedLabel": "Connected port",
+  "portSourceServer": "Server-provided identity",
+  "portSourceNotVerified": "Not verified",
+  "portSourceBlocked": "Server response · Review blocked",
+  "portNameLabel": "Port name",
+  "portIdentifierLabel": "Port identifier",
+  "portUnavailableValue": "Unavailable",
+  "portLicenseLabel": "License status",
+  "portLicenseActive": "Active",
+  "portLicenseUnknown": "Unknown · Not retrieved",
+  "portNoIdentityNote": "No verified identity or license is available. No local port selection is permitted.",
+  "portNotMyPortAction": "This is not my port",
+  "portContinueHint": "Continue to Sign In. Your role and task permissions still apply.",
+  "portBlockedHint": "Continuation is blocked until the server identity and license are verified.",
+  "portIncorrectHint": "Continuation is blocked until the correct connected port is verified. No inline correction or port switching.",
+  "loginHeaderSubtitle": "Field Operations · Sign In",
+  "loginTitle": "Sign In to Field Operations",
+  "loginAgainTitle": "Sign In Again",
+  "loginChangeTitle": "Set a new password",
+  "loginPortLabel": "Port",
+  "loginPortNotConfirmed": "Not yet confirmed",
+  "loginPortNotConfirmedNote": "Port identity will be confirmed after connection.",
+  "loginPortServerNote": "Server-provided port identity",
+  "loginAccountLabel": "Account",
+  "loginFirstLogin": "First login",
+  "loginFirstLoginNote": "A temporary password was used. Choose a new password to continue.",
+  "loginAccountDisabled": "Account disabled",
+  "loginAccountDisabledNote": "This account is disabled. Contact your Port Admin.",
+  "loginUsername": "Username",
+  "loginUsernameHint": "Enter your username",
+  "loginUsernameFixed": "Owner of the unsent events · fixed",
+  "loginUsernameRequired": "Username is required.",
+  "loginPassword": "Password",
+  "loginPasswordHint": "Enter your password",
+  "loginPasswordRequired": "Password is required.",
+  "loginShowPassword": "Show",
+  "loginHidePassword": "Hide",
+  "loginAction": "Sign In",
+  "loginSigningInAction": "Signing In…",
+  "loginNewPassword": "New password",
+  "loginNewPasswordHint": "Enter new password",
+  "loginPasswordRule": "At least 8 characters, with letters and numbers.",
+  "loginConfirmPassword": "Confirm new password",
+  "loginConfirmPasswordHint": "Repeat new password",
+  "loginNewPasswordRequired": "This field is required.",
+  "loginPasswordTooShort": "Use at least 8 characters.",
+  "loginPasswordLettersNumbers": "Use both letters and numbers.",
+  "loginPasswordMismatch": "The passwords do not match.",
+  "loginChangeAction": "Save and continue",
+  "loginSigningInTitle": "Signing in…",
+  "loginSigningInMessage": "Verifying credentials with the server. Please wait; sign-in is not yet complete.",
+  "loginInvalidTitle": "Sign-in unsuccessful",
+  "loginInvalidMessage": "Username or password is incorrect. Check your credentials and try again.",
+  "loginExpiredTitle": "Session expired · Sync paused",
+  "loginExpiredMessage": "Reconnect and sign in as the same user before sending pending events. Cached work and {count, plural, =0{the Outbox are} =1{1 Outbox event are} other{{count} Outbox events are}} preserved.",
+  "@loginExpiredMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "loginReauthTitle": "Sign in again before syncing",
+  "loginReauthMessage": "{count, plural, =0{Unsent events belong} =1{1 Outbox event belongs} other{{count} Outbox events belong}} to {username}. Sign in as this user to send {count, plural, =1{it} other{them}}; another user cannot send these events.",
+  "@loginReauthMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "loginOfflineTitle": "Server connection required",
+  "loginOfflineMessage": "Sign-in cannot complete offline. {count, plural, =0{Cached work remains on this device.} =1{Cached work and 1 Outbox event remain on this device; nothing has been sent.} other{Cached work and {count} Outbox events remain on this device; nothing has been sent.}}",
+  "@loginOfflineMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "loginTooManyTitle": "Too many attempts",
+  "loginServerErrorTitle": "Sign-in could not complete",
+  "loginFootnote": "Your session is linked to this device after sign-in.",
+  "loginOutboxFootnote": "Outbox kept · Owner: {username}\nSigning in again does not discard or reassign pending events.",
+  "@loginOutboxFootnote": {
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "loginChangeFootnote": "Required once, before any task can be opened.",
+  "loginDisabledFootnote": "No tasks can be opened for a disabled account.",
+  "taskTypePilotage": "Pilotage",
+  "taskTypeTug": "Tug assistance",
+  "taskTypeTerminal": "Terminal operation · actual reporting",
+  "taskStatusAssigned": "Assigned",
+  "taskStatusStarted": "In progress",
+  "taskStatusDone": "Executed",
+  "systemLabelUpdated": "Updated",
+  "systemLabelOverridden": "Overridden",
+  "systemLabelCancelled": "Cancelled",
+  "outboxStatusPending": "PENDING",
+  "outboxStatusSending": "SENDING",
+  "outboxStatusDone": "Done",
+  "outboxStatusRejected": "REJECTED",
+  "rejectPlanCancelled": "This update was rejected because the plan was cancelled.",
+  "rejectIllegalTransition": "The task status had already changed, so this update could not be applied.",
+  "rejectNotAssigned": "This task is no longer assigned to you.",
+  "rejectNotFound": "This task no longer exists.",
+  "rejectInvalidEvent": "The server could not accept this update.",
+  "rejectUnknown": "The server rejected this update.",
+  "notificationTypeAssignment": "Task assignment",
+  "notificationTypeReminder": "Pre-execution reminder",
+  "notificationTypeCancelled": "Plan cancelled",
+  "notificationStatusSent": "Sent",
+  "notificationStatusFailed": "Failed",
+  "notificationStatusAcknowledged": "Acknowledged",
+  "eventAcknowledgement": "Acknowledgement",
+  "eventDeviceLabel": "Device record",
+  "eventDispatchLabel": "Dispatch",
+  "eventAcceptanceLabel": "Server acceptance",
+  "eventDeviceNone": "No local status update saved",
+  "eventDeviceSaved": "{action} saved · {time}",
+  "@eventDeviceSaved": {
+    "placeholders": {
+      "action": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "eventDispatchNone": "No status update submitted",
+  "eventDispatchWaiting": "Not dispatched · Pending",
+  "eventDispatchFailed": "Attempt failed · retained",
+  "eventDispatchSending": "Sending · response awaited",
+  "eventDispatchDone": "Dispatched · {time}",
+  "@eventDispatchDone": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "eventAcceptanceNone": "No new update awaiting acceptance",
+  "eventAcceptanceWaiting": "{action} not confirmed",
+  "@eventAcceptanceWaiting": {
+    "placeholders": {
+      "action": {
+        "type": "String"
+      }
+    }
+  },
+  "eventAcceptanceDone": "{action} accepted · {time}",
+  "@eventAcceptanceDone": {
+    "placeholders": {
+      "action": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "eventAcceptanceRejected": "{action} rejected · retained",
+  "@eventAcceptanceRejected": {
+    "placeholders": {
+      "action": {
+        "type": "String"
+      }
+    }
+  },
+  "outboxAction": "Outbox",
+  "tasksListTitle": "My assignments",
+  "tasksListTitleCount": "My assignments · {count, plural, =1{1 task} other{{count} tasks}}",
+  "@tasksListTitleCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "tasksListTitleCt": "Terminal A · Actual reporting",
+  "tasksListTitleCtCount": "Terminal A · Actual reporting · {count, plural, =1{1 task} other{{count} tasks}}",
+  "@tasksListTitleCtCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "tasksRefreshAction": "Refresh",
+  "tasksRefreshing": "Refreshing…",
+  "tasksSyncLoading": "Loading assignments · sync separate",
+  "tasksSyncPending": "{count, plural, =1{1 pending event} other{{count} pending events}} · not server-confirmed",
+  "@tasksSyncPending": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "tasksSyncNone": "No queued execution updates",
+  "tasksFeedOnline": "Live assignment updates on · Connection is not sync confirmation",
+  "tasksFeedOffline": "Assignment feed disconnected · Reconnect for current assignments",
+  "tasksLoadingMessage": "Loading My Tasks…",
+  "tasksEmptyTitle": "No tasks assigned",
+  "tasksEmptyMessage": "New assignments will appear through the live update feed. You can also refresh the list.",
+  "tasksErrorMessage": "The request failed. Retry to request your assigned tasks again.",
+  "tasksErrorNoticeTitle": "Assignment list unavailable",
+  "tasksErrorNoticeMessage": "The assigned-task list could not be loaded. This does not mean you have no tasks, and no task or update was changed.",
+  "tasksLoadingNoticeTitle": "Loading your assigned tasks",
+  "tasksLoadingNoticeMessage": "Request in progress. Loading does not mean there are no tasks.",
+  "tasksOfflineEmptyTitle": "Offline · no cached tasks",
+  "tasksOfflineEmptyMessage": "This device has no cached assigned tasks for {name}. Connect to load tasks.",
+  "@tasksOfflineEmptyMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "tasksOfflineCachedTitle": "Offline · cached tasks may be stale",
+  "tasksOfflineCachedMessage": "Last cached: {time}. Open a cached task to record actual execution; unsent updates remain on this device.",
+  "@tasksOfflineCachedMessage": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "tasksOfflineCachedMessageNoTime": "Open a cached task to record actual execution; unsent updates remain on this device.",
+  "tasksUpdateTitle": "Assignment update received",
+  "tasksUpdateMessage": "Update received for {reference}. Review it in Task Details. Your pending updates are not replaced.",
+  "@tasksUpdateMessage": {
+    "placeholders": {
+      "reference": {
+        "type": "String"
+      }
+    }
+  },
+  "tasksLockedTitle": "Task changed by the planner",
+  "tasksLockedMessage": "{reference} was cancelled or replaced by a newer plan. Its actions are stopped.",
+  "@tasksLockedMessage": {
+    "placeholders": {
+      "reference": {
+        "type": "String"
+      }
+    }
+  },
+  "tasksPendingTitle": "{count, plural, =1{1 local update awaiting acceptance} other{{count} local updates awaiting acceptance}}",
+  "@tasksPendingTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "tasksPendingMessage": "{action} was saved on this device at {time}. The server-confirmed status stays as it is until acceptance.",
+  "@tasksPendingMessage": {
+    "placeholders": {
+      "action": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "tasksEmptyNoticeTitle": "Assignment list received",
+  "tasksEmptyNoticeMessage": "No tasks are assigned to {name} in the current server result.",
+  "@tasksEmptyNoticeMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "tasksScopeTitle": "Your assigned tasks only",
+  "tasksScopeMessage": "Signed in as {name}. Open an assigned task to acknowledge it and record actual execution in Task Details.",
+  "@tasksScopeMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "tasksScopeTugTitle": "Your Tug Master assignments",
+  "tasksScopeCtTitle": "Your terminal scope",
+  "tasksScopeCtMessage": "Signed in as {name}. Terminal operations that need actual-status reporting. No other terminal records are shown.",
+  "@tasksScopeCtMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "taskTugRef": "Tug {tug}",
+  "@taskTugRef": {
+    "placeholders": {
+      "tug": {
+        "type": "String"
+      }
+    }
+  },
+  "taskCached": "Cached",
+  "taskBerth": "Berth",
+  "taskScheduledTime": "Scheduled time",
+  "taskType": "Task type",
+  "taskLocalUpdate": "Local execution update",
+  "taskLocalSaved": "{action} · saved on device",
+  "@taskLocalSaved": {
+    "placeholders": {
+      "action": {
+        "type": "String"
+      }
+    }
+  },
+  "taskLocalNone": "None saved",
+  "taskSynchronization": "Synchronization",
+  "taskSyncPending": "Pending · not server-confirmed",
+  "taskSyncSending": "Sending · response awaited",
+  "taskSyncRejected": "Rejected · see Outbox",
+  "taskSyncNone": "No queued update for this task",
+  "taskOpenAction": "Open Task",
+  "taskServer": "Server",
+  "taskServerCached": "Server · cached",
+  "taskServerNoUpdate": "No execution update recorded",
+  "taskDetailsTitle": "Task Details & Status Update",
+  "taskDetailsSubtitle": "Task {reference} · {type}",
+  "@taskDetailsSubtitle": {
+    "placeholders": {
+      "reference": {
+        "type": "String"
+      },
+      "type": {
+        "type": "String"
+      }
+    }
+  },
+  "taskDetailsSubtitleEmpty": "Field execution",
+  "taskLoadingTitle": "Loading task details…",
+  "taskLoadingMessage": "Retrieving the assigned task from the server. Cached data stays visible if it exists.",
+  "taskLoadingData": "Loading task data…",
+  "taskNoDataNoticeTitle": "Task data unavailable",
+  "taskNoDataNoticeMessage": "There is no task record to display. This does not mean the task is completed.",
+  "taskNoDataTitle": "No task data available",
+  "taskNoDataMessage": "Task details are unavailable on this device. Return to My Tasks to review your assigned work.",
+  "taskCancelledTitle": "Task cancelled by the planner",
+  "taskCancelledMessage": "This task was cancelled. Actions are stopped; any local update is kept in the Outbox but cannot be applied.",
+  "taskOverriddenTitle": "Overridden by a newer plan",
+  "taskOverriddenMessage": "A newer plan version replaced this assignment. Actions are stopped; any local update is kept for review and is not applied.",
+  "taskRejectedTitle": "Rejected by server · update kept",
+  "taskSyncFailedTitle": "Synchronization failed · update kept",
+  "taskSyncFailedMessage": "{action} has not been accepted by the server. Your local update and cached task data remain available.",
+  "@taskSyncFailedMessage": {
+    "placeholders": {
+      "action": {
+        "type": "String"
+      }
+    }
+  },
+  "taskOfflineTitle": "Offline · using cached task data",
+  "taskOfflineMessage": "You can still record actual execution. Saved updates remain on this device and in the Outbox until server acceptance.",
+  "taskUpdatedTitle": "Received plan change · review assignment",
+  "taskUpdatedMessage": "The planner updated this task. Review the details below; your local updates are kept.",
+  "taskPendingTitle": "Local update awaiting synchronization",
+  "taskPendingMessage": "{action} is saved on this device and waiting to be sent. Online does not mean the server has accepted it.",
+  "@taskPendingMessage": {
+    "placeholders": {
+      "action": {
+        "type": "String"
+      }
+    }
+  },
+  "taskConfirmedTitle": "Execution update confirmed by server",
+  "taskConfirmedMessage": "The server accepted {action} at {time}. That update has left the Outbox queue.",
+  "@taskConfirmedMessage": {
+    "placeholders": {
+      "action": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "taskAcknowledgedTitle": "Task acknowledged",
+  "taskAcknowledgedMessage": "Your acknowledgment is recorded. It does not record In progress or Executed; save the execution status separately.",
+  "taskNotAcknowledgedTitle": "Not yet acknowledged",
+  "taskNotAcknowledgedMessage": "Opening this task does not acknowledge it. Use Acknowledge; execution updates remain available.",
+  "taskInfoTitle": "Task information",
+  "taskInfoTitleCached": "Task information · cached",
+  "taskVesselName": "Vessel Name",
+  "taskPlannedTime": "Planned Time",
+  "taskAssignedBerth": "Assigned Berth",
+  "taskAssignedTugs": "Assigned Tug(s)",
+  "taskAssignedPilot": "Assigned Marine Pilot",
+  "taskPlanReference": "Plan / assignment reference",
+  "taskAckTitle": "Acknowledge Task",
+  "taskAckNotYet": "Not yet acknowledged",
+  "taskAckDone": "Acknowledged by you · {time}",
+  "@taskAckDone": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "taskAckSaved": "Acknowledged · saved on device {time}",
+  "@taskAckSaved": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "taskAcknowledgeAction": "Acknowledge",
+  "taskAcknowledgedBadge": "Acknowledged",
+  "taskUpdateTitle": "Update Task Status",
+  "taskServerConfirmed": "Server-confirmed status: {status}",
+  "@taskServerConfirmed": {
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "taskLatestLocal": "Latest local update: {status}",
+  "@taskLatestLocal": {
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "taskSelectionNote": "Choose the status, then save. A selection alone is not saved.",
+  "taskSaveAction": "Save Status Update",
+  "taskSaveSyncLabel": "Save & Synchronization",
+  "taskSyncNoTask": "No task record on device",
+  "taskSyncNoTaskNote": "Online connection does not confirm task availability.",
+  "taskSyncAckSeparate": "Acknowledgment is separate from execution status.",
+  "taskSyncRejectedTitle": "Rejected by server",
+  "taskSyncRejectedNote": "Kept in the Outbox as Rejected.",
+  "taskSyncFailedShort": "Synchronization failed",
+  "taskSyncFailedNote": "Not accepted yet · kept in the Outbox as Pending.",
+  "taskSyncPendingOffline": "Pending Sync · Offline",
+  "taskSyncCachedAt": "Task last cached: {time}",
+  "@taskSyncCachedAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "taskSyncPendingTitle": "Pending Sync",
+  "taskSyncSendingTitle": "Sending",
+  "taskSyncWaitingNote": "Waiting to be sent; server acceptance not confirmed.",
+  "taskSyncDoneTitle": "Done · confirmed by server",
+  "taskSyncDoneNote": "Device save: {saved} · Acceptance: {accepted}",
+  "@taskSyncDoneNote": {
+    "placeholders": {
+      "saved": {
+        "type": "String"
+      },
+      "accepted": {
+        "type": "String"
+      }
+    }
+  },
+  "taskOutboxLabel": "Outbox",
+  "taskOutboxRetained": "Outbox · {count, plural, =1{1 update kept} other{{count} updates kept}}",
+  "@taskOutboxRetained": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "taskOutboxWaiting": "{count, plural, =1{1 update awaiting sync} other{{count} updates awaiting sync}}",
+  "@taskOutboxWaiting": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "taskOutboxEmpty": "No queued updates",
+  "taskRetrySyncAction": "Retry Sync",
+  "syncTitle": "Sync Status & Outbox",
+  "syncStripSending": "SENDING · awaiting server response",
+  "syncStripFailed": "Sync failure · {count, plural, =1{1 Pending kept} other{{count} Pending kept}}",
+  "@syncStripFailed": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "syncStripOffline": "Pending · sending paused offline",
+  "syncStripRejected": "{count, plural, =1{1 Rejected event · kept} other{{count} Rejected events · kept}}",
+  "@syncStripRejected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "syncStripConfirmed": "Synchronization confirmed",
+  "syncStripNone": "No pending events",
+  "syncStripCaption": "Device save → dispatch → server acceptance are separate steps",
+  "syncSendingAction": "Sending…",
+  "syncRetryAction": "Retry now",
+  "syncRefreshAction": "Refresh status",
+  "syncCountPending": "Pending events",
+  "syncCountDone": "Done events",
+  "syncCountRejected": "Rejected events",
+  "syncListTitle": "Device events · {count, plural, =0{none} =1{1 kept record} other{{count} kept records}}",
+  "@syncListTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "syncEmptyTitle": "No events on this device",
+  "syncEmptyMessage": "Acknowledgements and status updates you save will appear here until the server confirms them.",
+  "syncOwnership": "Recorded by: {username} · Events stay on this device",
+  "@syncOwnership": {
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "syncOwnershipNote": "No silent deletion or reassignment. Going offline or signing in again does not change who owns an event.",
+  "syncWipedTitle": "Device wiped",
+  "syncWipedMessage": "Events still PENDING on a wiped or reinstalled device are lost. Done events are removed after 30 days.",
+  "syncSendingTitle": "Dispatch in progress",
+  "syncSendingMessage": "Events are SENDING while the request is in flight and return to PENDING if sending fails. Sending is not server acceptance.",
+  "syncFailedTitle": "Send failed · can be retried",
+  "syncFailedMessage": "The send attempt failed before the server answered. Saved events stay PENDING and are retried automatically. Events never sent are lost if the device is wiped.",
+  "syncOfflineTitle": "Saved here; not sent",
+  "syncOfflineMessage": "{count, plural, =1{1 event remains} other{{count} events remain}} on this device. Reconnect to send under the user who recorded {count, plural, =1{it} other{them}}; saving offline is not server acceptance.",
+  "@syncOfflineMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "syncRejectedTitle": "Final rejection by the server",
+  "syncRejectedMessage": "A rejected event stays visible with its reason. Retrying cannot bypass a rejection.",
+  "syncWaitingTitle": "Waiting to send",
+  "syncWaitingMessage": "Saved events are sent in order as soon as the server can be reached.",
+  "syncConfirmedTitle": "Server receipt confirmed",
+  "syncConfirmedMessage": "An event is Done only after the server accepts it. Confirmed history stays visible.",
+  "syncEventLabel": "Event / status update",
+  "syncEventStatus": "Actual execution: {status}",
+  "@syncEventStatus": {
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "syncRecordedLabel": "Recorded on device",
+  "syncRelatedLabel": "Related assignment",
+  "syncRelatedValue": "{terminal} · Berth {berth}",
+  "@syncRelatedValue": {
+    "placeholders": {
+      "terminal": {
+        "type": "String"
+      },
+      "berth": {
+        "type": "String"
+      }
+    }
+  },
+  "syncDeviceSaveLabel": "Device save",
+  "syncDeviceSaved": "Saved on Device · kept",
+  "syncDispatchOffline": "Not dispatched · offline",
+  "syncEventPendingNote": "Pending is not Done: the server has not confirmed this update.",
+  "syncEventFailedNote": "The previous send failed. It stays Pending until the server accepts it.",
+  "syncEventRejectedNote": "Rejection reason: {reason}",
+  "@syncEventRejectedNote": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "syncEventDoneNote": "Confirmed history · Done events stay on the device for 30 days, then are removed.",
+  "settingsTitle": "Settings & Session",
+  "settingsLoading": "Loading settings…",
+  "settingsStripNoEvents": "No pending execution events",
+  "settingsStripNone": "Device: no queued update · Dispatch: none · Server: no new acceptance claimed",
+  "settingsStripUnknown": "Connection status unavailable · sync not verified",
+  "settingsStripPending": "{count, plural, =1{1 Pending event} other{{count} Pending events}} · preserved on device",
+  "@settingsStripPending": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsStripPendingCaption": "Device: saved · Dispatch: not sent · Server: {action} not confirmed",
+  "@settingsStripPendingCaption": {
+    "placeholders": {
+      "action": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsReadOnlyTitle": "Read-only information",
+  "settingsReadOnlyMessage": "Current authenticated user and current device only. Account, port, and application information cannot be edited here.",
+  "settingsPendingTitle": "Review unsent updates before logout",
+  "settingsPendingMessage": "Logging out does not clear or transfer pending events. Review Outbox now; same-user reauthentication is required for sending.",
+  "settingsUnknownTitle": "Unknown is not Offline",
+  "settingsUnknownMessage": "The app cannot determine the current connection. No Offline or sync-success claim is made; available account information stays read-only.",
+  "settingsAccountTitle": "Account",
+  "settingsAccountName": "Account name",
+  "settingsUsername": "Username",
+  "settingsRole": "Assigned role",
+  "settingsPortTitle": "Port",
+  "settingsPortName": "Port name",
+  "settingsPortId": "Port identifier",
+  "settingsPortNote": "Server-provided port context",
+  "settingsNotAvailable": "Not available",
+  "settingsAppTitle": "Application & Device",
+  "settingsVersion": "Installed version",
+  "settingsDevice": "Device information",
+  "settingsConnection": "Current connection",
+  "settingsAppNote": "Only information available to this app is shown. Language: English or Arabic (RTL layout). Pending updates stay on the device when the token expires.",
+  "settingsSessionTitle": "Session",
+  "settingsSessionMessage": "Log Out ends the session on this device.",
+  "settingsSessionPending": "{count, plural, =1{1 Pending event} other{{count} Pending events}} · original-user ownership retained",
+  "@settingsSessionPending": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsReviewOutbox": "Review Outbox",
+  "settingsLogOut": "Log Out",
+  "logoutDialogTitle": "Log out of this device?",
+  "logoutDialogMessage": "Your current session will end.",
+  "logoutDialogMessagePending": "Your current session will end. {count, plural, =1{1 unsent update remains} other{{count} unsent updates remain}} Pending on this device and may require reauthentication.",
+  "@logoutDialogMessagePending": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "logoutRetainedTitle": "{action} · Saved on Device · not dispatched or accepted",
+  "@logoutRetainedTitle": {
+    "placeholders": {
+      "action": {
+        "type": "String"
+      }
+    }
+  },
+  "logoutRetainedMessage": "Owner: {username}. Sign in again as this same user to sync. Events are never discarded or reassigned at logout.",
+  "@logoutRetainedMessage": {
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "logoutReviewPending": "Review Pending Events",
+  "logoutConfirm": "Confirm Log Out",
+  "signedOutHeader": "Field Operations · Signed Out",
+  "signedOutTitle": "You’re signed out",
+  "signedOutMessage": "The current device session has ended. Sign in again through Sign In to return to the authenticated application.",
+  "signedOutPendingTitle": "{count, plural, =1{1 unsent update remains} other{{count} unsent updates remain}} Pending on this device",
+  "@signedOutPendingTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "signedOutPendingMessage": "Original recording user: {username}. Reauthenticate as this same user before sync; another user cannot send this event.",
+  "@signedOutPendingMessage": {
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "signedOutDeviceRecord": "Device record",
+  "signedOutDeviceRecordValue": "{action} · saved at {time} · retained",
+  "@signedOutDeviceRecordValue": {
+    "placeholders": {
+      "action": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "signedOutDispatchValue": "Paused · no active session",
+  "signedOutFootnote": "Logout did not send, clear, discard, or transfer pending events. No authenticated account settings are exposed here.",
+  "notifStripLoading": "Receiving notifications…",
+  "notifStripLoadingCaption": "Synchronization not yet confirmed",
+  "notifStripError": "Refresh unavailable",
+  "notifStripOffline": "Offline · showing saved notifications",
+  "notifStripReceived": "Updates received from the port server",
+  "notifLastSync": "Last list sync: {time}",
+  "@notifLastSync": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "notifCachedCaption": "Saved on this device; new notifications arrive after reconnecting",
+  "notifErrorTitle": "Unable to refresh notifications",
+  "notifErrorMessage": "The connection to the port server is unavailable. This is a list-loading error, not a Failed notification status.",
+  "notifOfflineTitle": "Offline",
+  "notifOfflineMessage": "Acknowledgements you make now are saved on the device and sent when the connection is back.",
+  "notifFailedTitle": "A notification could not be delivered",
+  "notifFailedMessage": "Failed means the system could not distribute it. Acknowledging does not fix it, and there is no manual resend. Open the task to check it.",
+  "notifFilterAll": "All",
+  "notifListTitle": "My notifications",
+  "notifListTitleCount": "My notifications · {count, plural, =0{none} =1{1} other{{count}}} · newest first",
+  "@notifListTitleCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "notifLoadingMessage": "Loading notifications…",
+  "notifEmptyTitle": "No notifications",
+  "notifEmptyMessage": "New assignments, reminders and cancelled plans will appear here.",
+  "notifErrorListMessage": "New notifications and current statuses could not be loaded.",
+  "notifFilteredEmptyTitle": "No notifications match your filter",
+  "notifFilteredEmptyMessage": "Nothing with status “{status}”. Clear the filter to see all your notifications.",
+  "@notifFilteredEmptyMessage": {
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "notifClearFilter": "Clear filter",
+  "notifExplainTitle": "Understanding status and delivery",
+  "notifExplainStatus": "Sent = dispatched by the system, not device delivery. Failed = distribution failure. Acknowledged = user acknowledgement, not proof of device synchronization.",
+  "notifExplainOffline": "Acknowledgements made offline wait in the Outbox until the server accepts them.",
+  "notifMessageAssignment": "You have been assigned to this task.",
+  "notifMessageReminder": "This task starts soon.",
+  "notifMessageCancelled": "The plan for this task was cancelled. No more actions are possible.",
+  "notifNoteSent": "System dispatch confirmed. Acknowledge to confirm you have seen it.",
+  "notifNoteAckPending": "Acknowledgement saved on device · waiting for server acceptance.",
+  "notifNoteFailed": "Distribution failed. Not resolved by acknowledgement; no manual resend.",
+  "notifNoteAcknowledged": "Acknowledged at {time}. User acknowledgement only.",
+  "@notifNoteAcknowledged": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "notifRelatedTask": "Related task",
+  "notifTimestamp": "Received",
+  "notifOpenTask": "Open task",
+  "notifAcknowledge": "Acknowledge",
+  "notifAckSavedAction": "Saved · pending sync",
+  "notifAckSavedBadge": "Ack pending"
 }

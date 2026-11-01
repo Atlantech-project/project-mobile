@@ -70,6 +70,9 @@ abstract final class AppSizes {
   static const double panelWide = 760;
   static const double panelNarrow = 600;
 
+  /// Label column of a "Read-only information row" (P-58).
+  static const double infoRowLabel = 170;
+
   /// P-20 "Neutral error placeholder": the small "!" tile.
   static const double panelMarkTile = 36;
 

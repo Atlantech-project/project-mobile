@@ -5,6 +5,7 @@ import '../../features/auth/screens/login_screen.dart';
 import '../../features/auth/screens/port_identification_screen.dart';
 import '../../features/notifications/screens/notifications_screen.dart';
 import '../../features/settings/screens/settings_screen.dart';
+import '../../features/settings/screens/signed_out_screen.dart';
 import '../../features/sync/screens/sync_outbox_screen.dart';
 import '../../features/system/screens/access_denied_screen.dart';
 import '../../features/system/screens/app_update_required_screen.dart';
@@ -82,6 +83,11 @@ class AppRouter {
         name: AppRoutes.settingsName,
         builder: (context, state) => const SettingsScreen(),
       ),
+      GoRoute(
+        path: AppRoutes.signedOutPath,
+        name: AppRoutes.signedOutName,
+        builder: (context, state) => const SignedOutScreen(),
+      ),
     ],
   );
 
@@ -104,11 +110,17 @@ class AppRouter {
       return location == AppRoutes.portPath ? null : AppRoutes.portPath;
     }
 
-    // 3. Not signed in: only P-53 and P-52 are reachable.
+    // 3. Not signed in: only P-53, P-52 and, after Log Out, the P-58
+    // "signed out" page are reachable.
     if (!_session.isAuthenticated) {
       final onEntry =
-          location == AppRoutes.portPath || location == AppRoutes.loginPath;
-      return onEntry ? null : AppRoutes.loginPath;
+          location == AppRoutes.portPath ||
+          location == AppRoutes.loginPath ||
+          (location == AppRoutes.signedOutPath && _session.signedOutByUser);
+      if (onEntry) return null;
+      return _session.signedOutByUser
+          ? AppRoutes.signedOutPath
+          : AppRoutes.loginPath;
     }
 
     // 4. A non-field role, or a 403 on the last request, only sees P-20.
@@ -124,6 +136,7 @@ class AppRouter {
       AppRoutes.loginPath,
       AppRoutes.accessDeniedPath,
       AppRoutes.updateRequiredPath,
+      AppRoutes.signedOutPath,
     };
     if (entryPaths.contains(location)) return AppRoutes.tasksPath;
 

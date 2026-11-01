@@ -1,5 +1,8 @@
 import 'package:flutter/foundation.dart';
 
+import '../models/field_user.dart';
+import '../models/port_info.dart';
+
 /// Field roles the app knows about. [unsupported] is any non-field role,
 /// which must land on P-20 Access Denied.
 enum FieldRole {
@@ -30,10 +33,32 @@ class SessionState extends ChangeNotifier {
   String? _minAppVersion;
   bool _permissionDenied = false;
   bool _accountDisabled = false;
+  FieldUser? _user;
+  FieldUser? _lastUser;
+  PortInfo? _port;
+  bool _sessionExpired = false;
+  bool _signedOutByUser = false;
 
   bool get portIdentified => _portIdentified;
   bool get isAuthenticated => _isAuthenticated;
   FieldRole? get role => _role;
+
+  /// The signed-in user. Null when signed out.
+  FieldUser? get user => _user;
+
+  /// The user of the last session, kept after sign-out or expiry so P-52 can
+  /// ask the same user to sign in again (same-user Outbox rule).
+  FieldUser? get lastUser => _lastUser;
+
+  /// The identified port (P-53). Null until identified.
+  PortInfo? get port => _port;
+
+  /// The token expired or was revoked (401). P-52 shows "Sign in again".
+  bool get sessionExpired => _sessionExpired;
+
+  /// The user chose Log Out on P-58. The router shows the "signed out" page
+  /// until the next sign-in.
+  bool get signedOutByUser => _signedOutByUser;
 
   /// Non-null while the router must show P-20. Only meaningful when signed
   /// in.
@@ -56,23 +81,44 @@ class SessionState extends ChangeNotifier {
   /// (`min_app_version`). `null` when the server did not send it.
   String? get minAppVersion => _minAppVersion;
 
-  void markPortIdentified() {
+  void markPortIdentified([PortInfo? port]) {
     _portIdentified = true;
+    _port = port ?? _port;
     notifyListeners();
   }
 
-  void signIn(FieldRole role) {
+  void signIn(FieldRole role, {FieldUser? user}) {
     _isAuthenticated = true;
     _role = role;
+    _user = user;
+    _lastUser = user ?? _lastUser;
+    _sessionExpired = false;
+    _signedOutByUser = false;
     _permissionDenied = false;
     _accountDisabled = false;
     notifyListeners();
   }
 
-  void signOut() {
+  /// Ends the session. [byUser] is true for Log Out on P-58: [lastUser] and
+  /// the Outbox are kept, and the router shows the "signed out" page.
+  void signOut({bool byUser = false}) {
     _isAuthenticated = false;
     _role = null;
+    _user = null;
+    _sessionExpired = false;
+    _signedOutByUser = byUser;
     _permissionDenied = false;
+    notifyListeners();
+  }
+
+  /// A 401 on a signed-in request: signs out, keeps [lastUser] and the
+  /// Outbox, and P-52 asks for the same user again.
+  void expireSession() {
+    _isAuthenticated = false;
+    _role = null;
+    _user = null;
+    _permissionDenied = false;
+    _sessionExpired = true;
     notifyListeners();
   }
 
@@ -95,6 +141,7 @@ class SessionState extends ChangeNotifier {
     _accountDisabled = true;
     _isAuthenticated = false;
     _role = null;
+    _user = null;
     _permissionDenied = false;
     notifyListeners();
   }

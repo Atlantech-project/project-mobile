@@ -23,6 +23,7 @@ class AppHeader extends StatelessWidget {
     this.actions = const [],
     this.onBack,
     this.showLogo = true,
+    this.leading,
   });
 
   final String? title;
@@ -34,6 +35,9 @@ class AppHeader extends StatelessWidget {
   /// Shows a back button at the start edge when set.
   final VoidCallback? onBack;
   final bool showLogo;
+
+  /// A control between the logo and the title, e.g. P-55 "My Tasks".
+  final Widget? leading;
 
   @override
   Widget build(BuildContext context) {
@@ -90,6 +94,7 @@ class AppHeader extends StatelessWidget {
           if (onBack != null) _BackButton(onPressed: onBack!),
           // Phones keep the width for the screen title.
           if (showLogo && isTablet) const AppLogo(),
+          ?leading,
           Expanded(child: identity ?? const SizedBox.shrink()),
           ...actions,
         ],

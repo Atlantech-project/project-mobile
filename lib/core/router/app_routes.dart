@@ -41,4 +41,8 @@ abstract final class AppRoutes {
   // P-58
   static const String settingsPath = '/settings';
   static const String settingsName = 'settings';
+
+  // P-58 "Logout completed"
+  static const String signedOutPath = '/signed-out';
+  static const String signedOutName = 'signedOut';
 }
