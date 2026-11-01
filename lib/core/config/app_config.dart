@@ -32,5 +32,14 @@ abstract final class AppConfig {
   /// The app starts in Arabic (RTL). Change here to start in English.
   static const Locale defaultLocale = Locale('ar');
 
+  /// DEV-ONLY (Flutter Screens): run every screen on the in-memory mock
+  /// backend (`core/mock/`). Each MB task wires its screen to the real API;
+  /// turn this off with `--dart-define=USE_MOCK_DATA=false` once they are all
+  /// wired, then delete `core/mock/`.
+  static const bool useMockData = bool.fromEnvironment(
+    'USE_MOCK_DATA',
+    defaultValue: true,
+  );
+
   static const List<Locale> supportedLocales = [Locale('ar'), Locale('en')];
 }

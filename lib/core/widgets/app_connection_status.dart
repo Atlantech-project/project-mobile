@@ -15,9 +15,12 @@ import '../theme/app_text_styles.dart';
 /// Follows the device's real connection ([ConnectionCubit]) unless [isOnline]
 /// is given.
 class AppConnectionStatus extends StatelessWidget {
-  const AppConnectionStatus({super.key, this.isOnline});
+  const AppConnectionStatus({super.key, this.isOnline, this.isUnknown = false});
 
   final bool? isOnline;
+
+  /// The app cannot tell the connection (P-58). Not the same as offline.
+  final bool isUnknown;
 
   @override
   Widget build(BuildContext context) {
@@ -44,13 +47,19 @@ class AppConnectionStatus extends StatelessWidget {
               height: AppSizes.indicatorDot,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: isOnline
+                color: isUnknown
+                    ? AppColors.statusNeutralFg
+                    : isOnline
                     ? AppColors.statusSuccessFg
                     : AppColors.statusDangerFg,
               ),
             ),
             Text(
-              isOnline ? l10n.connectionOnline : l10n.connectionOffline,
+              isUnknown
+                  ? l10n.connectionUnknown
+                  : isOnline
+                  ? l10n.connectionOnline
+                  : l10n.connectionOffline,
               style: AppTextStyles.h3,
             ),
           ],

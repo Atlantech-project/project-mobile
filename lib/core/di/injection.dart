@@ -1,6 +1,16 @@
 import 'package:get_it/get_it.dart';
 
+import '../../features/auth/data/auth_repository.dart';
+import '../../features/auth/data/mock_auth_repository.dart';
+import '../../features/notifications/data/mock_notifications_repository.dart';
+import '../../features/notifications/data/notifications_repository.dart';
+import '../../features/sync/data/mock_outbox_repository.dart';
+import '../../features/sync/data/outbox_repository.dart';
+import '../../features/tasks/data/mock_tasks_repository.dart';
+import '../../features/tasks/data/tasks_repository.dart';
+import '../config/app_config.dart';
 import '../localization/locale_cubit.dart';
+import '../mock/mock_backend.dart';
 import '../network/client_info.dart';
 import '../network/connection_cubit.dart';
 import '../network/dio_client.dart';
@@ -39,8 +49,34 @@ Future<void> setupInjection() async {
       ),
     )
     ..registerLazySingleton<ConnectionCubit>(
-      () =>
-          ConnectionCubit(checkConnection: getIt<DioClient>().checkConnection),
+      () => ConnectionCubit(
+        checkConnection: AppConfig.useMockData
+            // DEV-ONLY (Flutter Screens): the mock backend decides.
+            ? () async => getIt<MockBackend>().online
+            : getIt<DioClient>().checkConnection,
+      ),
     )
     ..registerLazySingleton<AppRouter>(() => AppRouter(getIt<SessionState>()));
+
+  _registerRepositories();
+}
+
+/// Repositories. Each MB task swaps its mock for the real one here.
+void _registerRepositories() {
+  // DEV-ONLY (Flutter Screens): every repository runs on the mock backend.
+  final backend = MockBackend(getIt<SessionState>());
+  getIt
+    ..registerSingleton<MockBackend>(backend)
+    ..registerLazySingleton<AuthRepository>(() => MockAuthRepository(backend))
+    ..registerLazySingleton<TasksRepository>(
+      () => MockTasksRepository(backend, getIt<SessionState>()),
+    )
+    ..registerLazySingleton<OutboxRepository>(
+      () => MockOutboxRepository(backend),
+    )
+    ..registerLazySingleton<NotificationsRepository>(
+      () => MockNotificationsRepository(backend, getIt<SessionState>()),
+    );
+  // The header connection follows the mock switch right away.
+  backend.changes.listen((_) => getIt<ConnectionCubit>().recheck());
 }
