@@ -34,9 +34,12 @@ enum MockSyncScenario {
 /// Repositories call it with small delays so loading states show. The dev
 /// state picker on each screen changes its scenarios.
 class MockBackend {
-  MockBackend(this._session);
+  MockBackend(this._session, {required this.syncSource});
 
   final SessionState _session;
+
+  /// `sync_source` of the events saved in the mock (the MB-F3 device class).
+  final SyncSource syncSource;
 
   /// How long a fake request takes.
   static const Duration latency = Duration(milliseconds: 700);
@@ -224,6 +227,16 @@ class MockBackend {
         clientEventId:
             'evt-${DateTime.now().microsecondsSinceEpoch}-$_eventSeq',
         type: type,
+        payload: switch (type) {
+          OutboxEventType.statusUpdate => {
+            'plan_component_id': task.id,
+            'new_status': newStatus?.code,
+          },
+          OutboxEventType.acknowledge => {
+            'notification_id': task.notificationId,
+          },
+        },
+        syncSource: syncSource,
         taskId: task.id,
         taskReference: task.reference,
         planReference: task.planReference,
@@ -280,19 +293,19 @@ class MockBackend {
       if (task == null) {
         return e.copyWith(
           status: OutboxStatus.rejected,
-          reason: RejectReason.notFound,
+          reasonCode: RejectReason.notFound.code,
         );
       }
       if (task.systemLabel == SystemLabel.cancelled) {
         return e.copyWith(
           status: OutboxStatus.rejected,
-          reason: RejectReason.planCancelled,
+          reasonCode: RejectReason.planCancelled.code,
         );
       }
       if (task.systemLabel == SystemLabel.overridden) {
         return e.copyWith(
           status: OutboxStatus.rejected,
-          reason: RejectReason.illegalTransition,
+          reasonCode: RejectReason.illegalTransition.code,
         );
       }
       _applyToTask(e, accepted);
@@ -358,6 +371,11 @@ class MockBackend {
       OutboxEvent(
         clientEventId: 'evt-seed-$_eventSeq',
         type: OutboxEventType.statusUpdate,
+        payload: {
+          'plan_component_id': task.id,
+          'new_status': TaskStatus.done.code,
+        },
+        syncSource: syncSource,
         taskId: task.id,
         taskReference: task.reference,
         planReference: task.planReference,
@@ -371,7 +389,7 @@ class MockBackend {
         status: status,
         attempts: status == OutboxStatus.pending && !failed ? 0 : 1,
         lastAttemptFailed: failed,
-        reason: reason,
+        reasonCode: reason?.code,
         dispatchedAt: status == OutboxStatus.pending && !failed
             ? null
             : reported.add(const Duration(seconds: 40)),

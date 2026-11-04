@@ -1,3 +1,4 @@
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../features/auth/data/auth_repository.dart';
@@ -23,6 +24,13 @@ import '../network/root_ca.dart';
 import '../network/token_store.dart';
 import '../router/app_router.dart';
 import '../router/session_state.dart';
+import '../storage/device_class.dart';
+import '../storage/encryption_key_store.dart';
+import '../storage/entity_cache.dart';
+import '../storage/local_storage.dart';
+import '../storage/meta_store.dart';
+import '../storage/outbox_store.dart';
+import '../storage/secure_token_store.dart';
 
 final getIt = GetIt.instance;
 
@@ -30,12 +38,19 @@ final getIt = GetIt.instance;
 Future<void> setupInjection() async {
   final clientInfo = await ClientInfo.load();
   final securityContext = await RootCa.securityContext();
+  const secureStorage = FlutterSecureStorage();
+  final storage = await _openStorage(secureStorage);
 
   getIt
     ..registerSingleton<ClientInfo>(clientInfo)
+    ..registerSingleton<LocalStorage>(storage)
+    ..registerSingleton<OutboxStore>(storage.outbox)
+    ..registerSingleton<TaskCache>(storage.tasks)
+    ..registerSingleton<NotificationCache>(storage.notifications)
+    ..registerSingleton<MetaStore>(storage.meta)
     ..registerLazySingleton<SessionState>(SessionState.new)
-    ..registerLazySingleton<LocaleCubit>(LocaleCubit.new)
-    ..registerLazySingleton<TokenStore>(InMemoryTokenStore.new)
+    ..registerLazySingleton<LocaleCubit>(() => LocaleCubit(storage.meta))
+    ..registerLazySingleton<TokenStore>(() => SecureTokenStore(secureStorage))
     ..registerLazySingleton<DioClient>(
       () => DioClient(
         securityContext: securityContext,
@@ -61,10 +76,23 @@ Future<void> setupInjection() async {
   _registerRepositories();
 }
 
+/// Opens the encrypted boxes (MB-F3) and detects the device class on the
+/// first start. Runs before anything reads storage.
+Future<LocalStorage> _openStorage(FlutterSecureStorage secureStorage) async {
+  final storage = await LocalStorage.open(EncryptionKeyStore(secureStorage));
+  if (storage.meta.deviceClass == null) {
+    await storage.meta.saveDeviceClass(detectDeviceClass());
+  }
+  return storage;
+}
+
 /// Repositories. Each MB task swaps its mock for the real one here.
 void _registerRepositories() {
   // DEV-ONLY (Flutter Screens): every repository runs on the mock backend.
-  final backend = MockBackend(getIt<SessionState>());
+  final backend = MockBackend(
+    getIt<SessionState>(),
+    syncSource: getIt<MetaStore>().deviceClass!,
+  );
   getIt
     ..registerSingleton<MockBackend>(backend)
     ..registerLazySingleton<AuthRepository>(() => MockAuthRepository(backend))

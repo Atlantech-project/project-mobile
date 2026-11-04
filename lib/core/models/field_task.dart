@@ -1,13 +1,48 @@
+import '../network/api_date_time.dart';
+
 /// `component_type` of an assigned plan component (MB-P54).
-enum TaskComponentType { pilot, tug, terminalOps }
+enum TaskComponentType {
+  pilot('PILOT'),
+  tug('TUG'),
+  terminalOps('TERMINAL_OPS');
+
+  const TaskComponentType(this.code);
+
+  final String code;
+
+  static TaskComponentType fromCode(String code) =>
+      values.firstWhere((t) => t.code == code);
+}
 
 /// Execution status of a plan component. The buttons say In progress and
 /// Executed; the values sent are `STARTED` and `DONE` (MB-P55).
-enum TaskStatus { assigned, started, done }
+enum TaskStatus {
+  assigned('ASSIGNED'),
+  started('STARTED'),
+  done('DONE');
+
+  const TaskStatus(this.code);
+
+  final String code;
+
+  static TaskStatus? fromCode(String? code) =>
+      values.where((s) => s.code == code).firstOrNull;
+}
 
 /// `system_label` from the server (MB-P54, MB-P55). `overridden` and
 /// `cancelled` stop every action.
-enum SystemLabel { updated, overridden, cancelled }
+enum SystemLabel {
+  updated('UPDATED'),
+  overridden('OVERRIDDEN'),
+  cancelled('CANCELLED');
+
+  const SystemLabel(this.code);
+
+  final String code;
+
+  static SystemLabel? fromCode(String? code) =>
+      values.where((l) => l.code == code).firstOrNull;
+}
 
 /// One assigned task (a plan component) as cached on the device.
 class FieldTask {
@@ -89,5 +124,50 @@ class FieldTask {
     systemLabel: clearSystemLabel ? null : (systemLabel ?? this.systemLabel),
     notificationId: notificationId,
     acknowledgedAt: acknowledgedAt ?? this.acknowledgedAt,
+  );
+
+  /// The task cache record (MB-F3). Keeps system_label and ersion
+  /// exactly as received.
+  Map<String, Object?> toJson() => {
+    'id': id,
+    'reference': reference,
+    'plan_reference': planReference,
+    'terminal': terminal,
+    'component_type': componentType.code,
+    'vessel_name': vesselName,
+    'berth': berth,
+    'planned_start': ApiDateTime.format(plannedStart),
+    'planned_end': ApiDateTime.format(plannedEnd),
+    'version': version,
+    'tugs': tugs,
+    'pilot_name': pilotName,
+    'status': status.code,
+    'status_at': ApiDateTime.formatOrNull(statusAt),
+    'system_label': systemLabel?.code,
+    'notification_id': notificationId,
+    'acknowledged_at': ApiDateTime.formatOrNull(acknowledgedAt),
+  };
+
+  factory FieldTask.fromJson(Map<String, Object?> json) => FieldTask(
+    id: json['id']! as String,
+    reference: json['reference']! as String,
+    planReference: json['plan_reference']! as String,
+    terminal: json['terminal']! as String,
+    componentType: TaskComponentType.fromCode(
+      json['component_type']! as String,
+    ),
+    vesselName: json['vessel_name']! as String,
+    berth: json['berth']! as String,
+    plannedStart: DateTime.parse(json['planned_start']! as String),
+    plannedEnd: DateTime.parse(json['planned_end']! as String),
+    version: json['version']! as String,
+    tugs: List<String>.from(json['tugs']! as List),
+    pilotName: json['pilot_name'] as String?,
+    status:
+        TaskStatus.fromCode(json['status'] as String?) ?? TaskStatus.assigned,
+    statusAt: ApiDateTime.parseOrNull(json['status_at']),
+    systemLabel: SystemLabel.fromCode(json['system_label'] as String?),
+    notificationId: json['notification_id'] as String?,
+    acknowledgedAt: ApiDateTime.parseOrNull(json['acknowledged_at']),
   );
 }
