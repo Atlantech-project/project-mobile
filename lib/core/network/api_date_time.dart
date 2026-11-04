@@ -15,4 +15,12 @@ abstract final class ApiDateTime {
         '${two(utc.day)}T${two(utc.hour)}:${two(utc.minute)}:'
         '${two(utc.second)}.${fraction}Z';
   }
+
+  /// [format] for an optional value. Also used by the device cache (MB-F3).
+  static String? formatOrNull(DateTime? value) =>
+      value == null ? null : format(value);
+
+  /// Reads back a value written by [format]. `null` stays `null`.
+  static DateTime? parseOrNull(Object? value) =>
+      value == null ? null : DateTime.parse(value as String);
 }

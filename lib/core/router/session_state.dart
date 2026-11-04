@@ -24,7 +24,9 @@ enum AccessDeniedReason {
 }
 
 /// In-memory session used by the router redirect.
-// TODO(MB-F3): back this with secure storage so it survives restarts.
+// TODO(MB-P52): restore from storage at start. MB-F3 keeps the token in
+// `SecureTokenStore` and the user in `MetaStore.sessionUser` / `lastUser`;
+// sign-in saves them.
 class SessionState extends ChangeNotifier {
   bool _portIdentified = false;
   bool _isAuthenticated = false;
