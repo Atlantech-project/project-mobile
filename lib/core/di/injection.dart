@@ -10,7 +10,6 @@ import '../../features/sync/data/outbox_repository.dart';
 import '../../features/tasks/data/mock_tasks_repository.dart';
 import '../../features/tasks/data/tasks_repository.dart';
 import '../config/app_config.dart';
-import '../localization/locale_cubit.dart';
 import '../mock/mock_backend.dart';
 import '../network/client_info.dart';
 import '../network/connection_cubit.dart';
@@ -49,7 +48,6 @@ Future<void> setupInjection() async {
     ..registerSingleton<NotificationCache>(storage.notifications)
     ..registerSingleton<MetaStore>(storage.meta)
     ..registerLazySingleton<SessionState>(SessionState.new)
-    ..registerLazySingleton<LocaleCubit>(() => LocaleCubit(storage.meta))
     ..registerLazySingleton<TokenStore>(() => SecureTokenStore(secureStorage))
     ..registerLazySingleton<DioClient>(
       () => DioClient(

@@ -42,7 +42,7 @@ class _PortView extends StatelessWidget {
     return AppScaffold(
       header: AppHeader(
         subtitle: l10n.portHeaderSubtitle,
-        actions: const [AppConnectionStatus(), AppLanguageButton()],
+        actions: const [AppConnectionStatus()],
       ),
       body: BlocBuilder<PortCubit, PortState>(
         builder: (context, state) => DevScenarioMenu(

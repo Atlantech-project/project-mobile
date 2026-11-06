@@ -133,7 +133,6 @@ class _BackButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Icons.arrow_back mirrors automatically in RTL.
     return AppIconButton(
       icon: Icons.arrow_back,
       tooltip: AppLocalizations.of(context).backAction,

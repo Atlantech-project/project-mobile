@@ -9,7 +9,6 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_sizes.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/theme/app_text_styles.dart';
-import '../../../core/widgets/app_ltr.dart';
 import '../../../core/widgets/app_notice.dart';
 import '../../../core/widgets/app_panel.dart';
 import '../../../core/widgets/app_scaffold.dart';
@@ -91,7 +90,7 @@ class AppUpdateRequiredScreen extends StatelessWidget {
 }
 
 /// Figma "Version information": installed and required side by side between
-/// two rules, stacked on phone. Versions stay LTR inside Arabic.
+/// two rules, stacked on phone.
 class _VersionInfo extends StatelessWidget {
   const _VersionInfo({required this.installed, required this.required});
 
@@ -146,7 +145,7 @@ class _VersionField extends StatelessWidget {
           label,
           style: AppTextStyles.bodyL.copyWith(color: AppColors.textMuted),
         ),
-        Text(ltrIsolate(value), style: AppTextStyles.h3),
+        Text(value, style: AppTextStyles.h3),
       ],
     );
   }

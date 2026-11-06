@@ -182,11 +182,9 @@ class _Status extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isRtl = Directionality.of(context) == TextDirection.rtl;
-    // Arabic letters join, so they get no tracking and no upper case.
     final style = AppTextStyles.labelM.copyWith(
       color: AppColors.coverText.withValues(alpha: 0.75),
-      letterSpacing: isRtl ? 0 : 1.6,
+      letterSpacing: 1.6,
     );
 
     const segment = 0.3;
@@ -232,7 +230,7 @@ class _Status extends StatelessWidget {
                 ),
               ),
             ),
-            Text(isRtl ? text : text.toUpperCase(), style: style),
+            Text(text.toUpperCase(), style: style),
           ],
         ),
       ),

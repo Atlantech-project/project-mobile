@@ -12,7 +12,7 @@ abstract final class AppFonts {
 /// One style per Figma text style. Height = lineHeight / fontSize.
 ///
 /// Headings and numbers default to [AppColors.textPrimary], body text to
-/// [AppColors.textSecondary]. Arabic falls back to the system font by design.
+/// [AppColors.textSecondary].
 abstract final class AppTextStyles {
   static TextStyle _montserrat(
     double size,

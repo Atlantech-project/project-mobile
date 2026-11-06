@@ -104,7 +104,7 @@ class SplashLockup extends StatelessWidget {
       ),
     );
 
-    // The artwork reads left to right in both languages.
+    // The artwork always reads left to right.
     final ltr = Directionality(
       textDirection: TextDirection.ltr,
       child: Semantics(label: 'ATLANTECH', image: true, child: lockup),

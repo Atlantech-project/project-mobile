@@ -9,7 +9,7 @@ Read this file fully before any task. Detailed docs live in `docs/`:
 - **The task** is the MB-xx item in the ATLANTECH Progress Tracker (the roadmap): its title, description and "Done when".
 - **`docs/task-notes.md`** changes that text. Read its "Global rules", then the section with the task ID. A note adds to the roadmap text or replaces the part it names. No section means the roadmap text is current.
 - **Priority when sources disagree:** the API contract (CT-xx) first, then `docs/task-notes.md`, then the tracker text, then this file. If a note and a contract disagree, stop and ask Farouk.
-- This file holds the project's coding rules (stack, folders, design system, RTL, style). It does not define what a task must do. If this file and the tracker or the notes disagree about a task, follow the tracker and the notes and report the difference.
+- This file holds the project's coding rules (stack, folders, design system, localization, style). It does not define what a task must do. If this file and the tracker or the notes disagree about a task, follow the tracker and the notes and report the difference.
 - The architecture blueprint (`ATLANTECH_Flutter_Architecture.md`) is background reading. It is not in this repo, and the contracts and the notes win over it.
 
 ## 1. Project facts
@@ -48,7 +48,7 @@ lib/
 │   ├── di/            injection.dart (setupInjection)
 │   ├── router/        app_router.dart, app_routes.dart, session_state.dart
 │   ├── theme/         tokens + ThemeData (see section 5)
-│   ├── localization/  l10n/*.arb + generated files, locale_cubit.dart
+│   ├── localization/  l10n/app_en.arb + generated files
 │   ├── responsive/    responsive.dart
 │   ├── errors/        custom exceptions + AppErrorMessage (MB-F2)
 │   ├── network/       dio_client.dart, interceptors/ (MB-F2)
@@ -88,7 +88,7 @@ lib/
 - Status is always color **plus** a text label — never color alone.
 - One strong color per screen: navy for the primary action, teal secondary/info, gold only for small accents.
 - Light theme only.
-- Fonts: Montserrat (headings, numbers), Inter (everything else), Roboto Mono (IDs like PT-A-0109, IMO). Arabic text falls back to the Android system font — this is intended by the design system; do not add an Arabic font.
+- Fonts: Montserrat (headings, numbers), Inter (everything else), Roboto Mono (IDs like PT-A-0109, IMO).
 - Shared widgets live in `core/widgets/` with the `App` prefix (`AppButton`, `AppStatusBadge`, …). Screens compose these; they do not restyle them.
 - **Page states (MB-S01):** a page that loads data puts its body in `AppStateBody(status: …)`; its Cubit state carries an `AppViewStatus` (loading, ready, empty, error, offline). Never build a spinner or an empty/error layout by hand. Full pages show the brand symbol (`AppLoadingView`, `AppStateView`); inside a card or list pass `compact: true` (icon in a circle). For known progress pass `value` to `AppLoadingIndicator`.
 - The splash (`/splash`, `features/system/screens/splash_screen.dart`) is the only dark screen. It uses the `cover*` colour tokens; no other screen may use them.
@@ -118,13 +118,11 @@ lib/
 | Tab / Tabs | 331:24882 / 331:24883 |
 | Icons 16 px line | 271:14 |
 
-## 6. Localization and RTL
+## 6. Localization
 
-- Arabic and English, switchable at runtime. Full RTL, not just translated text.
-- **No hardcoded user-facing strings.** Every string goes in `app_en.arb` and `app_ar.arb`.
-- Use `EdgeInsetsDirectional`, `AlignmentDirectional`, `PositionedDirectional`, `start`/`end`. Never `left`/`right` for layout.
-- Directional icons (arrows, chevrons) must mirror in RTL.
-- Times, IDs and codes stay LTR inside RTL text (wrap with `Directionality(textDirection: TextDirection.ltr)` or Unicode isolation when needed).
+- **English only, left to right.** No Arabic, no RTL, no language switch (decided by Farouk, 2026-11-06). `AppConfig.locale` is `en`.
+- **No hardcoded user-facing strings.** Every string goes in `app_en.arb` (gen-l10n), so text stays in one place.
+- Directional widgets (`EdgeInsetsDirectional`, `AlignmentDirectional`, `start`/`end`) already in the code may stay; new code may use either form.
 
 ## 7. Code style
 

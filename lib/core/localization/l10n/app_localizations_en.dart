@@ -51,9 +51,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get backAction => 'Back';
 
   @override
-  String get switchLanguage => 'العربية';
-
-  @override
   String get connectionOnline => 'Online';
 
   @override
@@ -1484,7 +1481,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get settingsAppNote =>
-      'Only information available to this app is shown. Language: English or Arabic (RTL layout). Pending updates stay on the device when the token expires.';
+      'Only information available to this app is shown. Language: English. Pending updates stay on the device when the token expires.';
 
   @override
   String get settingsSessionTitle => 'Session';

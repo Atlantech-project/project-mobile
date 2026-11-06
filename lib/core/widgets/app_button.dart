@@ -63,8 +63,7 @@ class AppButton extends StatefulWidget {
   final AppButtonVariant variant;
   final AppButtonSize size;
 
-  /// Leading icon. Use a directional icon (e.g. `Icons.arrow_back`) when it
-  /// must mirror in RTL.
+  /// Leading icon.
   final IconData? icon;
 
   /// Fill the available width.

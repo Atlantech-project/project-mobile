@@ -65,7 +65,6 @@ class _MyTasksView extends StatelessWidget {
             label: l10n.titleSettings,
             onPressed: () => context.push(AppRoutes.settingsPath),
           ),
-          const AppLanguageButton(),
         ],
       ),
       body: BlocBuilder<TasksCubit, TasksState>(

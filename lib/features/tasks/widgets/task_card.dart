@@ -103,7 +103,6 @@ class TaskCard extends StatelessWidget {
                 label: l10n.taskBerth,
                 value: task.berth,
                 valueStyle: AppTextStyles.h2,
-                ltrValue: true,
               ),
               AppInfoField(
                 label: l10n.taskScheduledTime,
@@ -178,7 +177,7 @@ class _Reference extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Text(
-    ltrIsolate(text),
+    text,
     style: AppTextStyles.bodyM.copyWith(color: AppColors.textMuted),
   );
 }

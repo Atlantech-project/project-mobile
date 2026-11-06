@@ -5,7 +5,6 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
-import 'app_localizations_ar.dart';
 import 'app_localizations_en.dart';
 
 // ignore_for_file: type=lint
@@ -93,10 +92,7 @@ abstract class AppLocalizations {
       ];
 
   /// A list of this localizations delegate's supported locales.
-  static const List<Locale> supportedLocales = <Locale>[
-    Locale('ar'),
-    Locale('en'),
-  ];
+  static const List<Locale> supportedLocales = <Locale>[Locale('en')];
 
   /// No description provided for @appName.
   ///
@@ -181,12 +177,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Back'**
   String get backAction;
-
-  /// Label of the language toggle. Shows the language it switches to.
-  ///
-  /// In en, this message translates to:
-  /// **'العربية'**
-  String get switchLanguage;
 
   /// No description provided for @connectionOnline.
   ///
@@ -2495,7 +2485,7 @@ abstract class AppLocalizations {
   /// No description provided for @settingsAppNote.
   ///
   /// In en, this message translates to:
-  /// **'Only information available to this app is shown. Language: English or Arabic (RTL layout). Pending updates stay on the device when the token expires.'**
+  /// **'Only information available to this app is shown. Language: English. Pending updates stay on the device when the token expires.'**
   String get settingsAppNote;
 
   /// No description provided for @settingsSessionTitle.
@@ -2870,7 +2860,7 @@ class _AppLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) =>
-      <String>['ar', 'en'].contains(locale.languageCode);
+      <String>['en'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -2879,8 +2869,6 @@ class _AppLocalizationsDelegate
 AppLocalizations lookupAppLocalizations(Locale locale) {
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'ar':
-      return AppLocalizationsAr();
     case 'en':
       return AppLocalizationsEn();
   }

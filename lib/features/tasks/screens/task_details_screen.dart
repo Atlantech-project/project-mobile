@@ -61,7 +61,7 @@ class _TaskDetailsView extends StatelessWidget {
             subtitle: task == null
                 ? l10n.taskDetailsSubtitleEmpty
                 : l10n.taskDetailsSubtitle(
-                    ltrIsolate(task.reference),
+                    task.reference,
                     l10n.taskTypeLabel(task.componentType),
                   ),
             leading: context.isTablet
@@ -72,7 +72,7 @@ class _TaskDetailsView extends StatelessWidget {
                   )
                 : null,
             onBack: context.isTablet ? null : () => _back(context),
-            actions: const [AppConnectionStatus(), AppLanguageButton()],
+            actions: const [AppConnectionStatus()],
           ),
           body: DevScenarioMenu(
             scenarios: _devScenarios(context, state),
@@ -306,13 +306,11 @@ class _TaskInformation extends StatelessWidget {
               label: l10n.taskAssignedBerth,
               value: task.berth,
               valueStyle: value,
-              ltrValue: true,
             ),
             AppInfoField(
               label: l10n.taskAssignedTugs,
               value: task.tugs.isEmpty ? '—' : task.tugs.join(' + '),
               valueStyle: value,
-              ltrValue: true,
             ),
           ),
           row(
@@ -323,7 +321,7 @@ class _TaskInformation extends StatelessWidget {
             ),
             AppInfoField(
               label: l10n.taskPlanReference,
-              value: '${ltrIsolate(task.planReference)} · ${task.terminal}',
+              value: '${task.planReference} · ${task.terminal}',
               valueStyle: value,
             ),
           ),

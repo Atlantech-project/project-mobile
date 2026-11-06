@@ -59,7 +59,6 @@ class _SyncView extends StatelessWidget {
                 ? context.pop()
                 : context.go(AppRoutes.tasksPath),
           ),
-          const AppLanguageButton(),
         ],
       ),
       body: BlocBuilder<SyncCubit, SyncState>(
@@ -160,7 +159,7 @@ class _SyncView extends StatelessWidget {
         spacing: AppSpacing.s1,
         children: [
           Text(
-            l10n.syncOwnership(ltrIsolate(user?.username ?? '')),
+            l10n.syncOwnership(user?.username ?? ''),
             style: AppTextStyles.strongM.copyWith(color: AppColors.textPrimary),
           ),
           Text(
@@ -299,7 +298,7 @@ class _Counter extends StatelessWidget {
       child: Row(
         spacing: AppSpacing.s5,
         children: [
-          Text(ltrIsolate('$value'), style: AppTextStyles.numberDisplay),
+          Text('$value', style: AppTextStyles.numberDisplay),
           Flexible(child: Text(label, style: AppTextStyles.bodyL)),
         ],
       ),
@@ -355,7 +354,7 @@ class _EventCard extends StatelessWidget {
               Expanded(
                 child: Text(
                   '${e.vesselName} · '
-                  '${ltrIsolate('${e.taskReference} · ${e.planReference}')}',
+                  '${e.taskReference} · ${e.planReference}',
                   style: AppTextStyles.h3Size20,
                 ),
               ),
@@ -379,7 +378,7 @@ class _EventCard extends StatelessWidget {
               ),
               AppInfoField(
                 label: l10n.syncRelatedLabel,
-                value: l10n.syncRelatedValue(e.terminal, ltrIsolate(e.berth)),
+                value: l10n.syncRelatedValue(e.terminal, e.berth),
               ),
             ],
           ),
