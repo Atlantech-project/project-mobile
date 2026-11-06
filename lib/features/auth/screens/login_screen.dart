@@ -78,7 +78,7 @@ class _LoginViewState extends State<_LoginView> {
       backdrop: true,
       header: AppHeader(
         subtitle: l10n.loginHeaderSubtitle,
-        actions: const [AppConnectionStatus(), AppLanguageButton()],
+        actions: const [AppConnectionStatus()],
       ),
       body: BlocConsumer<LoginCubit, LoginState>(
         listenWhen: (a, b) =>
@@ -180,7 +180,6 @@ class _LoginViewState extends State<_LoginView> {
                   : null,
               controller: _username,
               enabled: state.fixedUsername == null,
-              textDirection: TextDirection.ltr,
               errorText: state.usernameError == null
                   ? null
                   : l10n.loginUsernameRequired,

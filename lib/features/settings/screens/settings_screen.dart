@@ -63,7 +63,6 @@ class _SettingsView extends StatelessWidget {
                 ? context.pop()
                 : context.go(AppRoutes.tasksPath),
           ),
-          const AppLanguageButton(),
         ],
       ),
       body: BlocBuilder<SettingsCubit, SettingsState>(
@@ -219,7 +218,6 @@ class _Account extends StatelessWidget {
         InfoRow(
           label: l10n.settingsUsername,
           value: user?.username ?? l10n.settingsNotAvailable,
-          ltrValue: true,
         ),
         InfoRow(
           label: l10n.settingsRole,
@@ -247,7 +245,6 @@ class _Port extends StatelessWidget {
         InfoRow(
           label: l10n.settingsPortId,
           value: port?.portCode ?? l10n.settingsNotAvailable,
-          ltrValue: port != null,
         ),
         Text(
           l10n.settingsPortNote,
@@ -271,15 +268,10 @@ class _Application extends StatelessWidget {
     return InfoCard(
       title: l10n.settingsAppTitle,
       children: [
-        InfoRow(
-          label: l10n.settingsVersion,
-          value: client.appVersion,
-          ltrValue: true,
-        ),
+        InfoRow(label: l10n.settingsVersion, value: client.appVersion),
         InfoRow(
           label: l10n.settingsDevice,
           value: client.deviceId ?? l10n.settingsNotAvailable,
-          ltrValue: client.deviceId != null,
         ),
         InfoRow(
           label: l10n.settingsConnection,
@@ -422,7 +414,7 @@ class _LogoutDialog extends StatelessWidget {
                     title: l10n.logoutRetainedTitle(
                       l10n.eventAction(unsent.last),
                     ),
-                    message: l10n.logoutRetainedMessage(ltrIsolate(username)),
+                    message: l10n.logoutRetainedMessage(username),
                   ),
                   AppButton.outline(
                     label: l10n.logoutReviewPending,

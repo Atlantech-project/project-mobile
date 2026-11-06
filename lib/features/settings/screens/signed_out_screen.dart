@@ -35,10 +35,7 @@ class SignedOutScreen extends StatelessWidget {
     final latest = unsent.isEmpty ? null : unsent.last;
 
     return AppScaffold(
-      header: AppHeader(
-        title: l10n.signedOutHeader,
-        actions: const [AppLanguageButton()],
-      ),
+      header: AppHeader(title: l10n.signedOutHeader),
       body: AppPanel(
         maxWidth: AppSizes.panelWide,
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -53,9 +50,7 @@ class SignedOutScreen extends StatelessWidget {
             const SizedBox(height: AppSpacing.s6),
             RetainedEventsBox(
               title: l10n.signedOutPendingTitle(unsent.length),
-              message: l10n.signedOutPendingMessage(
-                ltrIsolate(owner?.username ?? ''),
-              ),
+              message: l10n.signedOutPendingMessage(owner?.username ?? ''),
             ),
             const SizedBox(height: AppSpacing.s6),
             InfoRow(

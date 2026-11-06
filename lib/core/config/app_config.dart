@@ -29,8 +29,8 @@ abstract final class AppConfig {
   /// The offline ATLANTECH Root CA that signs every port's TLS certificate.
   static const String rootCaAsset = 'assets/certs/atlantech_root_ca.pem';
 
-  /// The app starts in Arabic (RTL). Change here to start in English.
-  static const Locale defaultLocale = Locale('ar');
+  /// The app is English only (left to right).
+  static const Locale locale = Locale('en');
 
   /// DEV-ONLY (Flutter Screens): run every screen on the in-memory mock
   /// backend (`core/mock/`). Each MB task wires its screen to the real API;
@@ -40,6 +40,4 @@ abstract final class AppConfig {
     'USE_MOCK_DATA',
     defaultValue: true,
   );
-
-  static const List<Locale> supportedLocales = [Locale('ar'), Locale('en')];
 }

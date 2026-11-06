@@ -1,11 +1,9 @@
 // DEV-ONLY: replaced screen by screen as each P-xx task lands.
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../di/injection.dart';
 import '../localization/l10n/app_localizations.dart';
-import '../localization/locale_cubit.dart';
 import '../responsive/responsive.dart';
 import '../router/app_routes.dart';
 import '../router/session_state.dart';
@@ -16,7 +14,6 @@ import 'app_button.dart';
 import 'app_card.dart';
 import 'app_connection_status.dart';
 import 'app_header.dart';
-import 'app_icon_button.dart';
 import 'app_scaffold.dart';
 import 'app_state_body.dart';
 
@@ -72,11 +69,6 @@ class DevPlaceholderScreen extends StatelessWidget {
           ],
           // Before sign-in the header shows the connection state (info only).
           if (!showNavigation && !showBack) const AppConnectionStatus(),
-          AppIconButton(
-            icon: Icons.translate,
-            tooltip: l10n.switchLanguage,
-            onPressed: () => context.read<LocaleCubit>().toggle(),
-          ),
         ],
       ),
       body: _DevStates(

@@ -103,8 +103,8 @@ class NotificationCard extends StatelessWidget {
               AppInfoField(
                 label: l10n.notifRelatedTask,
                 value:
-                    '${ltrIsolate(n.taskReference)} · ${n.vesselName}\n'
-                    '${l10n.syncRelatedValue(n.terminal, ltrIsolate(n.berth))}',
+                    '${n.taskReference} · ${n.vesselName}\n'
+                    '${l10n.syncRelatedValue(n.terminal, n.berth)}',
               ),
               AppInfoField(
                 label: l10n.notifTimestamp,

@@ -31,7 +31,6 @@ class AppTextField extends StatefulWidget {
     this.onSubmitted,
     this.trailing,
     this.size = AppTextFieldSize.tablet,
-    this.textDirection,
   });
 
   final String label;
@@ -53,9 +52,6 @@ class AppTextField extends StatefulWidget {
   /// Widget at the end of the input, e.g. the password Show/Hide control.
   final Widget? trailing;
   final AppTextFieldSize size;
-
-  /// Force LTR for usernames, IDs or codes inside RTL screens.
-  final TextDirection? textDirection;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
@@ -173,7 +169,6 @@ class _AppTextFieldState extends State<AppTextField> {
                   textInputAction: widget.textInputAction,
                   onChanged: widget.onChanged,
                   onSubmitted: widget.onSubmitted,
-                  textDirection: widget.textDirection,
                   style: inputStyle,
                   cursorColor: AppColors.textPrimary,
                   decoration: InputDecoration.collapsed(

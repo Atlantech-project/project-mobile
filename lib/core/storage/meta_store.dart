@@ -1,9 +1,7 @@
 import 'dart:convert';
-import 'dart:ui';
 
 import 'package:hive_ce/hive_ce.dart';
 
-import '../config/app_config.dart';
 import '../models/field_user.dart';
 import '../models/outbox_event.dart';
 
@@ -18,7 +16,6 @@ class MetaStore {
 
   static const _schemaVersion = 'schema_version';
   static const _deviceClass = 'device_class';
-  static const _locale = 'locale';
   static const _sessionUser = 'session_user';
   static const _lastUser = 'last_user';
 
@@ -36,17 +33,6 @@ class MetaStore {
 
   Future<void> saveDeviceClass(SyncSource value) =>
       _box.put(_deviceClass, value.code);
-
-  /// The language the user chose, or `null` before the first change.
-  Locale? get locale {
-    final code = _box.get(_locale);
-    return AppConfig.supportedLocales
-        .where((l) => l.languageCode == code)
-        .firstOrNull;
-  }
-
-  Future<void> saveLocale(Locale locale) =>
-      _box.put(_locale, locale.languageCode);
 
   /// The signed-in user (MB-P52). `null` when signed out.
   FieldUser? get sessionUser => _readUser(_sessionUser);

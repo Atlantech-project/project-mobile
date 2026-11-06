@@ -11,21 +11,15 @@ import '../../../core/widgets/widgets.dart';
 /// Figma "Read-only information row" (P-58): a fixed label column, then the
 /// value. On phones the label goes above the value.
 class InfoRow extends StatelessWidget {
-  const InfoRow({
-    super.key,
-    required this.label,
-    required this.value,
-    this.ltrValue = false,
-  });
+  const InfoRow({super.key, required this.label, required this.value});
 
   final String label;
   final String value;
-  final bool ltrValue;
 
   @override
   Widget build(BuildContext context) {
     if (!context.isTablet) {
-      return AppInfoField(label: label, value: value, ltrValue: ltrValue);
+      return AppInfoField(label: label, value: value);
     }
     return Row(
       crossAxisAlignment: CrossAxisAlignment.baseline,
@@ -41,7 +35,7 @@ class InfoRow extends StatelessWidget {
         ),
         Expanded(
           child: Text(
-            ltrValue ? ltrIsolate(value) : value,
+            value,
             style: AppTextStyles.tabletLabel.copyWith(
               color: AppColors.textPrimary,
             ),

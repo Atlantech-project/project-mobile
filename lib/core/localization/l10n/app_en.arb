@@ -14,10 +14,6 @@
   "cancelAction": "Cancel",
   "confirmAction": "Confirm",
   "backAction": "Back",
-  "switchLanguage": "العربية",
-  "@switchLanguage": {
-    "description": "Label of the language toggle. Shows the language it switches to."
-  },
   "connectionOnline": "Online",
   "connectionOffline": "Offline",
   "requiredMark": "Required",
@@ -741,7 +737,7 @@
   "settingsVersion": "Installed version",
   "settingsDevice": "Device information",
   "settingsConnection": "Current connection",
-  "settingsAppNote": "Only information available to this app is shown. Language: English or Arabic (RTL layout). Pending updates stay on the device when the token expires.",
+  "settingsAppNote": "Only information available to this app is shown. Language: English. Pending updates stay on the device when the token expires.",
   "settingsSessionTitle": "Session",
   "settingsSessionMessage": "Log Out ends the session on this device.",
   "settingsSessionPending": "{count, plural, =1{1 Pending event} other{{count} Pending events}} · original-user ownership retained",

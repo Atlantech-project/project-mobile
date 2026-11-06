@@ -61,7 +61,6 @@ class _NotificationsView extends StatelessWidget {
                 ? context.pop()
                 : context.go(AppRoutes.tasksPath),
           ),
-          const AppLanguageButton(),
         ],
       ),
       body: BlocBuilder<NotificationsCubit, NotificationsState>(

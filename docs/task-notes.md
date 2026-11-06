@@ -35,7 +35,7 @@ Roadmap says: "error mapping (401, 403, 409, 422, 426), Root CA trust, ping"
 
 - Do not use `Idempotency-Key` on `/sync/events`, `/auth/mobile/login` and `/broadcasting/auth`.
 - Map these codes to custom exceptions: 401, 403, 404, 409, 422, 423, 426, 429, 503.
-- Parse the problem body (see Global rules). Translate by `message_key` from the app's Arabic and English files, fall back to the English `detail`.
+- Parse the problem body (see Global rules). Translate by `message_key` from the app's English file (`app_en.arb`), fall back to the English `detail`.
 - Replace "ping" with `checkConnection()` on `GET /system/info` (no sign-in, never 426).
 - Send every datetime as UTC ISO 8601 with microseconds and `Z`.
 
